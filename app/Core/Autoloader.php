@@ -1,0 +1,71 @@
+<?php
+/**
+ * PakAutoParts - Hand-written PSR-4 Autoloader
+ * Eliminates need for Composer runtime in shared hosting environments.
+ */
+
+declare(strict_types=1);
+
+namespace App\Core;
+
+class Autoloader
+{
+    private static array $prefixes = [];
+
+    public static function register(): void
+    {
+        spl_autoload_register([self::class, 'loadClass']);
+
+        // Register default App namespace
+        self::addNamespace('App', dirname(__DIR__));
+    }
+
+    public static function addNamespace(string $prefix, string $baseDir): void
+    {
+        $prefix = trim($prefix, '\\') . '\\';
+        $baseDir = rtrim($baseDir, DIRECTORY_SEPARATOR) . '/';
+
+        if (!isset(self::$prefixes[$prefix])) {
+            self::$prefixes[$prefix] = [];
+        }
+
+        self::$prefixes[$prefix][] = $baseDir;
+    }
+
+    public static function loadClass(string $class): bool
+    {
+        $prefix = $class;
+
+        while (false !== ($pos = strrpos($prefix, '\\'))) {
+            $prefix = substr($class, 0, $pos + 1);
+            $relativeClass = substr($class, $pos + 1);
+
+            $mappedFile = self::loadMappedFile($prefix, $relativeClass);
+            if ($mappedFile) {
+                return true;
+            }
+
+            $prefix = rtrim($prefix, '\\');
+        }
+
+        return false;
+    }
+
+    private static function loadMappedFile(string $prefix, string $relativeClass): bool
+    {
+        if (!isset(self::$prefixes[$prefix])) {
+            return false;
+        }
+
+        foreach (self::$prefixes[$prefix] as $baseDir) {
+            $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
+            if (file_exists($file)) {
+                require_once $file;
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
+

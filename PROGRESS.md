@@ -1,0 +1,59 @@
+# Auto Spare Parts E-Commerce Store - Implementation Progress
+
+Tracking progress across the 7 development phases:
+
+- [x] **Phase 1: Foundation & Core Framework**
+  - Database schema (`database/database.sql` with FKs, indexes, FULLTEXT, 12 demo spare parts, realistic Pakistan market makes/models, shipping table, admin seed)
+  - Hand-written PSR-4 Autoloader (`app/Core/Autoloader.php`)
+  - Core MVC: Config, Database (PDO), Request, Response, Router, Controller, Model, View
+  - Session security, CSRF protection, Authentication, Rate Limiter, GD Image Handler
+  - Directory structure, helpers, language file, root and subfolder `.htaccess` files
+  - Models: Setting, Product, Category, Brand, Vehicle, Order, Coupon, Review, PartRequest, BlogPost, AuditLog, Customer
+- [x] **Phase 2: Design System & Layouts**
+  - Industrial Auto Parts design tokens & CSS variables
+  - Tailwind configuration (`tailwind.config.js`), `src/input.css`, build scripts (`build-css.bat`, `build-css.sh`)
+  - Standalone compiled fallback stylesheet (`assets/css/app.css` & `custom.css`) with A4 and 80mm thermal print CSS
+  - Header with sticky search, mega-menu, cart drawer trigger, phone/WhatsApp CTA
+  - Bottom mobile navigation bar, floating WhatsApp widget, trust bar
+  - Shared UI components: buttons, badges, modals, toasts, skeleton loaders, breadcrumbs, pagination, empty states
+  - Vector SVG logo and client-side stores (`garage.js`, `app.js`)
+- [x] **Phase 3: Storefront & Vehicle Fitment ("My Garage")**
+  - Hero with "Select Your Vehicle" fitment engine (Make → Model → Year → Engine)
+  - "My Garage" vehicle persistence (localStorage + cookie) & instant compatibility checker
+  - Home page: Hero fitment selector, featured categories, best sellers, shop by vehicle/brand, trust highlights
+  - Catalog page with part-number-first search (SKU/OEM exact match ranks top), multi-faceted filtering, sorting, pagination, AJAX support
+  - Product details page: multi-image gallery with zoom, stock status, OEM/cross-references, wholesale tier pricing table, fitment matrix, reviews, related parts
+  - "Can't find your part?" request popup & "Notify me when in stock" form
+  - Vehicle landing pages `/parts/{make}/{model}/{year}`
+- [x] **Phase 4: Cart, Checkout & Order Tracking**
+  - Client-side cart (stores only product_id + qty in localStorage)
+  - Server-side price, tier discount, coupon, shipping & tax recalculation (tamper-proof)
+  - Guest checkout with optional account creation
+  - Multi-payment support: COD, Direct Bank Transfer, JazzCash / Easypaisa manual screenshot upload
+  - "Buy via WhatsApp" direct checkout with structured order payload
+  - Coupon system (fixed, percentage, minimum spend, usage limits)
+  - Transactional stock deduction with `SELECT ... FOR UPDATE` row locking
+  - Order tracking page (Order ID + phone number) with courier tracking status & rate limiting
+  - Part request sourcing form (`/request-part`)
+- [x] **Phase 5: Admin Panel (`/admin`)**
+  - Secure authentication with rate limiting, login lockout & audit logging
+  - Role-based permissions (Owner, Manager, Staff)
+  - Dashboard with KPI cards, Chart.js 30-day revenue line, top products bar chart, status doughnut
+  - Product manager: CRUD, auto-slug, multi-image GD uploader, fitment selector, wholesale tiers, Quill rich text, CSV import/export
+  - Order manager: filtering, status workflow, courier assignment, tracking number, WhatsApp customer message button
+  - Printable documents: A4 professional invoice, 80mm thermal receipt, warehouse packing slip (print CSS)
+  - Category, Brand, Vehicle fitment, Customer, Coupon, Review, and Part Request managers
+  - Low stock alerts & inventory reporting
+  - Store settings (branding, WhatsApp, bank accounts, shipping rates) & one-click database backup
+- [x] **Phase 6: Blog & Technical SEO Engine**
+  - Dashboard Quill blog editor with image upload, categories, tags, and SEO snippet preview
+  - Public blog with magazine grid, reading time, auto-generated table of contents, and related parts widgets
+  - Dynamic XML Sitemap index (products, categories, blog posts, vehicle pages)
+  - Robots.txt, canonical URLs, 301 redirect engine for changed slugs
+  - Rich JSON-LD schemas: Product (PKR offer, availability, reviews), Article, BreadcrumbList, FAQPage, Organization
+  - OpenGraph & Twitter Card social meta tags
+- [x] **Phase 7: Hardening, Security Audit & Deployment Guide**
+  - Security audit and remediation (CSRF, PDO bindings, finfo MIME validation, rate limiting, secure cookies)
+  - Neutral SVG placeholder fallback asset (`public/assets/images/placeholder.svg`)
+  - `README.md` & `README_DEPLOY.md` (Local setup with Laragon/XAMPP, database import, shared hosting deployment, credentials, testing checklist)
+  - Production readiness confirmed: 100% complete, fully implemented end-to-end without stubs or placeholders

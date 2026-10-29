@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" fill="none">
+  <!-- Gear & Piston Icon -->
+  <g transform="translate(4, 8)">
+    <circle cx="24" cy="24" r="22" fill="#0F172A" stroke="#F97316" stroke-width="3"/>
+    <!-- Gear teeth -->
+    <path d="M22 2h4v5h-4zM22 41h4v5h-4zM2 22h5v4H2zM41 22h5v4h-5zM8 8l3 3-3 3-3-3zM37 37l3 3-3 3-3-3zM8 37l3-3 3 3-3 3zM37 8l3 3-3 3-3-3z" fill="#F97316"/>
+    <!-- Spark / Bolt Accent -->
+    <path d="M26 12L18 25h7l-3 11 11-14h-7l4-10z" fill="#F97316"/>
+  </g>
+  <!-- Text: PAK AUTO PARTS -->
+  <text x="64" y="32" font-family="'Chakra Petch', 'Barlow Condensed', 'Inter', sans-serif" font-size="24" font-weight="800" fill="#0F172A" letter-spacing="1.5">PAK<tspan fill="#F97316">AUTO</tspan>PARTS</text>
+  <text x="64" y="48" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#64748B" letter-spacing="2">GENUINE &amp; OEM AUTO PARTS NETWORK</text>
+</svg>
+

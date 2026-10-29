@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #0f172a;
+    background-color: #f8fafc;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  ::selection {
+    background-color: #f97316;
+    color: #ffffff;
+  }
+}
+
+@layer components {
+  /* Industrial Button Utilities */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-5 py-2.5 bg-brand-500 hover:bg-brand-600 active:bg-brand-700 text-white font-semibold rounded-lg shadow-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed text-sm uppercase tracking-wider font-condensed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-5 py-2.5 bg-chassis-800 hover:bg-chassis-900 active:bg-chassis-950 text-white font-semibold rounded-lg shadow-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-chassis-700 focus:ring-offset-2 disabled:opacity-50 text-sm;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-4 py-2 bg-transparent hover:bg-chassis-100 text-chassis-800 font-medium rounded-lg border border-chassis-300 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-chassis-400;
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center px-4 py-2.5 bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold rounded-lg shadow-sm transition-all text-sm focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2;
+  }
+
+  /* Form Controls */
+  .form-input {
+    @apply w-full rounded-lg border border-chassis-300 bg-white px-3.5 py-2.5 text-sm text-chassis-900 placeholder-chassis-400 shadow-sm focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 disabled:bg-chassis-100;
+  }
+
+  .form-label {
+    @apply block text-xs font-bold uppercase tracking-wider text-chassis-700 mb-1.5 font-condensed;
+  }
+
+  /* Badge Styles */
+  .badge-genuine {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-300;
+  }
+
+  .badge-oem {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded text-xs font-bold uppercase tracking-wider bg-sky-100 text-sky-800 border border-sky-300;
+  }
+
+  .badge-aftermarket {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded text-xs font-bold uppercase tracking-wider bg-amber-100 text-amber-800 border border-amber-300;
+  }
+}
+

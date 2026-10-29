@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e2e8f0" stroke-width="0.75"/>
+    </pattern>
+  </defs>
+
+  <!-- Clean Precision Light Background -->
+  <rect width="400" height="400" fill="#f8fafc"/>
+  <rect width="400" height="400" fill="url(#grid)"/>
+  <rect x="8" y="8" width="384" height="384" rx="8" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Centered Technical Part Silhouette -->
+  <g transform="translate(200, 180)">
+    <!-- Outer Gear Silhouette -->
+    <path d="M-15,-65 L15,-65 L18,-45 A50,50 0 0,1 45,-18 L65,-15 L65,15 L45,18 A50,50 0 0,1 18,45 L15,65 L-15,65 L-18,45 A50,50 0 0,1 -45,18 L-65,15 L-65,-15 L-45,-18 A50,50 0 0,1 -18,-45 Z" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+    <circle cx="0" cy="0" r="32" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+    <!-- Safety Orange Caliper / Spark Accent -->
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#f97316" stroke-width="3" stroke-dasharray="8 4"/>
+    <circle cx="0" cy="0" r="8" fill="#f97316"/>
+    <!-- Crossed Wrench Accent -->
+    <path d="M-36,25 L-18,7 L-11,14 L-29,32 Z" fill="#94a3b8"/>
+    <circle cx="-36" cy="32" r="8" fill="none" stroke="#94a3b8" stroke-width="2.5"/>
+  </g>
+
+  <!-- Clean Technical Label -->
+  <text x="200" y="275" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#475569" text-anchor="middle" letter-spacing="0.5">OEM SPARE PART</text>
+  <text x="200" y="295" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#94a3b8" text-anchor="middle">Official Catalog Image Pending</text>
+
+  <!-- Tag Pill -->
+  <g transform="translate(200, 340)">
+    <rect x="-65" y="-11" width="130" height="22" rx="4" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="0" y="4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" fill="#64748b" text-anchor="middle" letter-spacing="1">100% GENUINE</text>
+  </g>
+</svg>

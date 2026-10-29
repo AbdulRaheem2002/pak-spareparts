@@ -1,0 +1,30 @@
+# Environment & deployment archives
+*.zip
+*.tar.gz
+*.rar
+
+# Storage logs & cache
+storage/logs/*
+!storage/logs/.gitkeep
+storage/cache/*
+!storage/cache/.gitkeep
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Agent & CLI caches
+.agents/
+.claude/
+__pycache__/
+*.tmp
+
+# User uploads (keep folder structure)
+public/uploads/products/*
+!public/uploads/products/.gitkeep
+public/uploads/blog/*
+!public/uploads/blog/.gitkeep
+public/uploads/payments/*
+!public/uploads/payments/.gitkeep
