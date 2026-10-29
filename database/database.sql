@@ -625,7 +625,9 @@ INSERT INTO `blog_posts` (`id`, `title`, `slug`, `excerpt`, `content`, `featured
 
 -- 12. Default Admin User (password: Admin@12345)
 INSERT INTO `users` (`id`, `name`, `email`, `password_hash`, `role`) VALUES
-(1, 'System Administrator', 'admin@pakbikeparts.pk', '$2y$10$z9u2Tt9WPM0DfP3Jquf5O.z4l7Qi8vaCPGAZtj2Mt4E6QaUkRGZOO', 'owner');
+(1, 'System Administrator', 'admin@pakbikeparts.pk', '$2y$10$z9u2Tt9WPM0DfP3Jquf5O.z4l7Qi8vaCPGAZtj2Mt4E6QaUkRGZOO', 'owner'),
+(2, 'System Administrator', 'admin@pakautoparts.pk', '$2y$10$z9u2Tt9WPM0DfP3Jquf5O.z4l7Qi8vaCPGAZtj2Mt4E6QaUkRGZOO', 'owner')
+ON DUPLICATE KEY UPDATE `password_hash` = VALUES(`password_hash`), `failed_logins` = 0, `lockout_until` = NULL;
 
 -- 13. Coupons & Shipping
 INSERT INTO `coupons` (`id`, `code`, `discount_type`, `discount_value`, `min_spend`, `max_discount`, `usage_limit`, `usage_count`, `start_date`, `expiry_date`, `is_active`) VALUES

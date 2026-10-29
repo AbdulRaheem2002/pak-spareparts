@@ -22,7 +22,7 @@ class AuthController extends Controller
         }
 
         return $this->view('admin/auth/login', [
-            'title' => 'Admin Sign In | PakAutoParts',
+            'title' => 'Admin Sign In | PakBikeParts',
         ], null); // Render without public storefront layout
     }
 
@@ -41,7 +41,7 @@ class AuthController extends Controller
         }
 
         if (Auth::attempt($email, $password)) {
-            Session::flash('success', 'Welcome back to PakAutoParts Control Panel.');
+            Session::flash('success', 'Welcome back to PakBikeParts Control Panel.');
             return $this->redirect('/admin');
         }
 

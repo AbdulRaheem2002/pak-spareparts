@@ -53,6 +53,9 @@ class Auth
             ['id' => $user['id']]
         );
 
+        RateLimiter::clear("login_{$email}");
+        RateLimiter::clear("login_ip_{$ip}");
+
         Session::regenerate();
         Session::set(self::SESSION_USER_KEY, (int)$user['id']);
         Session::set('_auth_user_role', $user['role']);
@@ -131,8 +134,8 @@ class Auth
 
     private static function isLockedOut(string $email, string $ip): bool
     {
-        return RateLimiter::tooManyAttempts("login_{$email}", 5, 300)
-            || RateLimiter::tooManyAttempts("login_ip_{$ip}", 10, 300);
+        return RateLimiter::tooManyAttempts("login_{$email}", 10, 300)
+            || RateLimiter::tooManyAttempts("login_ip_{$ip}", 20, 300);
     }
 
     private static function recordFailedAttempt(string $email, string $ip, ?int $userId = null, int $failedCount = 0): void
