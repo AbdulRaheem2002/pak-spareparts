@@ -3,8 +3,8 @@
 
   <div class="flex items-center justify-between pb-4 border-b border-slate-200">
     <div>
-      <h2 class="text-xl font-bold uppercase font-condensed tracking-wider text-slate-900">Product Categories</h2>
-      <p class="text-xs text-slate-500">Organize automotive systems and catalog navigation</p>
+      <h2 class="text-xl font-bold uppercase font-condensed tracking-wider text-slate-900">Motorcycle Categories</h2>
+      <p class="text-xs text-slate-500">Organize motorcycle systems, parts categories and catalog navigation</p>
     </div>
     <button type="button" @click="editMode = true; currentCat = { id: 0, name: '', slug: '', description: '', sort_order: 0 }" class="btn-primary text-xs py-2">
       + Add Category &rarr;

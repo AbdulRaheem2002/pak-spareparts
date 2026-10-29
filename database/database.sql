@@ -389,189 +389,261 @@ CREATE TABLE `url_redirects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ==============================================================================
--- REALISTIC SEED DATA FOR PAKISTAN AUTO SPARE PARTS MARKET
+-- REALISTIC SEED DATA FOR PAKISTAN MOTORCYCLE SPARE PARTS MARKET
 -- ==============================================================================
 
--- 1. Default Administrator (password: Admin@12345)
--- Hash generated via password_hash('Admin@12345', PASSWORD_BCRYPT)
-INSERT INTO `users` (`id`, `name`, `email`, `password_hash`, `role`) VALUES
-(1, 'System Administrator', 'admin@pakautoparts.pk', '$2y$10$wT8Kx5uQyY4v3EcmS7Ff9eQ/d4q.U/v9Y2qC4yR3X1W8J2G8zJ9Gy', 'owner');
+-- ==============================================================================
+-- PakBikeParts - Motorcycle Specialized Database Migration & Seed
+-- 100% Focused on Pakistani Bike Market: Honda CD70/CG125, Yamaha YBR, Suzuki GS150
+-- ==============================================================================
 
--- 2. Categories
+
+-- 1. TRUNCATE CATALOG TABLES (Preserve Users & Orders)
+
+-- 2. BIKE CATEGORIES & SYSTEMS
 INSERT INTO `categories` (`id`, `name`, `slug`, `description`, `sort_order`, `is_active`) VALUES
-(1, 'Engine Components', 'engine-components', 'Pistons, timing belts, spark plugs, valves, gasket kits, and mounts.', 1, 1),
-(2, 'Brake System', 'brake-system', 'High-performance brake pads, disc rotors, master cylinders, and brake fluid.', 2, 1),
-(3, 'Suspension & Steering', 'suspension-steering', 'Shock absorbers, ball joints, control arms, tie rod ends, and bushings.', 3, 1),
-(4, 'Filters & Maintenance', 'filters-maintenance', 'Genuine oil filters, air filters, cabin AC filters, and fuel filters.', 4, 1),
-(5, 'Electrical & Ignition', 'electrical-ignition', 'Alternators, starter motors, ignition coils, spark plugs, and sensors.', 5, 1),
-(6, 'Lighting & Bulbs', 'lighting-bulbs', 'Headlights, tail lights, fog lights, LED bulbs, and indicators.', 6, 1),
-(7, 'Body Parts & Mirrors', 'body-parts-mirrors', 'Bumpers, side mirrors, door handles, fenders, and grilles.', 7, 1),
-(8, 'Oils & Lubricants', 'oils-lubricants', 'Engine oils, transmission fluids, brake fluids, and coolants.', 8, 1),
-(9, 'Tyres & Wheels', 'tyres-wheels', 'High-durability radial tyres, alloy rims, and wheel bearings.', 9, 1),
-(10, 'Car & Bike Accessories', 'accessories', 'Floor mats, seat covers, horns, wipers, and emergency tool kits.', 10, 1);
+(1, 'Engine & Cylinder Parts', 'engine-cylinder', 'Piston kits, cylinder blocks, clutch plates, valves, gaskets, and timing chains for bikes.', 1, 1),
+(2, 'Carburetor & Fuel System', 'carburetor-fuel', 'Complete carburetors, repair jet kits, petrol tanks, and fuel petcocks.', 2, 1),
+(3, 'Drive & Sprockets', 'drive-transmission', 'Heavy-duty 428H chain & sprocket kits, front sprockets, and gear shift forks.', 3, 1),
+(4, 'Electrical & Ignition', 'electrical-ignition', 'CDI units, magneto coils, spark plugs, rectifiers, and complete wiring harnesses.', 4, 1),
+(5, 'Brakes & Control Cables', 'brakes-cables', 'Front & rear brake shoes, disc pads, clutch cables, and throttle cables.', 5, 1),
+(6, 'Shocks & Suspension', 'suspension-handling', 'Front hydraulic forks, rear shock absorbers, steering cone sets, and swingarms.', 6, 1),
+(7, 'Body Covers, Lights & Seats', 'body-plastics-lights', 'Side covers (tappay), headlights, tail lamps, indicators, mudguards, and seats.', 7, 1),
+(8, 'Silencers & Exhaust', 'silencers-exhaust', 'Original stock exhaust silencers (dholki), exhaust bends, and chrome heat guards.', 8, 1),
+(9, 'Tyres, Tubes & 4T Oils', 'tyres-tubes-oils', 'Tubeless tyres (2.50-17, 2.75-17, 90/90-18), heavy-duty butyl tubes, and 4T engine oils.', 9, 1);
 
--- 3. Brands
+-- 3. MOTORCYCLE BRANDS (Pakistan Market)
 INSERT INTO `brands` (`id`, `name`, `slug`, `description`, `is_popular`) VALUES
-(1, 'Toyota Genuine', 'toyota-genuine', 'Original OEM Japanese components manufactured for Toyota vehicles.', 1),
-(2, 'Honda Genuine', 'honda-genuine', 'Factory-certified genuine parts directly engineered for Honda cars and bikes.', 1),
-(3, 'Suzuki Genuine', 'suzuki-genuine', 'Authentic Pak Suzuki and Suzuki Motor Corporation certified parts.', 1),
-(4, 'Denso', 'denso', 'World-leading Japanese manufacturer of spark plugs, radiators, and sensors.', 1),
-(5, 'NGK Spark Plugs', 'ngk', 'Premium ignition components, laser iridium spark plugs and oxygen sensors.', 1),
-(6, 'Bosch', 'bosch', 'German engineered brake pads, wiper blades, horns, and fuel injectors.', 1),
-(7, 'AISIN', 'aisin', 'Top OEM Japanese supplier of clutch kits, water pumps, and transmission oil.', 1),
-(8, 'KYB (Kayaba)', 'kyb', 'World-renowned Japanese shock absorbers and suspension components.', 1),
-(9, 'Guard Filters', 'guard-filters', 'Pakistan\'s premier and ISO-certified engine and cabin filtration brand.', 1),
-(10, 'Shell Lubricants', 'shell', 'High-performance synthetic engine oils engineered for extreme Asian climates.', 1);
+(1, 'Atlas Honda Genuine', 'atlas-honda', 'Official 100% genuine replacement parts engineered by Atlas Honda Pakistan.', 1),
+(2, 'Crown Lifan', 'crown-lifan', 'Pakistan\'s premier and most trusted motorcycle aftermarket spare parts brand.', 1),
+(3, 'Yamaha Genuine (YGP)', 'yamaha-genuine', 'Original factory-certified components for Yamaha YBR and YB series.', 1),
+(4, 'Suzuki Genuine (SGP)', 'suzuki-genuine', 'Authentic Pak Suzuki certified parts for GS150, GD110S, and GR150.', 1),
+(5, 'FCC Clutch Japan', 'fcc-clutch', 'World-leading Japanese friction discs and heavy-duty clutch plates.', 1),
+(6, 'NGK Spark Plugs', 'ngk', 'Japanese high-ignition spark plugs for maximum mileage and cold starting.', 1),
+(7, 'Mikuni Japan', 'mikuni', 'Precision carburetors and fuel-air ratio systems engineered in Japan.', 1),
+(8, 'Panther Tyres', 'panther-tyres', 'High-grip durable motorcycle tyres engineered for Pakistani road conditions.', 1),
+(9, 'Servis Tyres', 'servis-tyres', 'Pakistan\'s oldest and most respected motorcycle tyre and tube manufacturer.', 1),
+(10, 'Caltex Havoline', 'caltex-havoline', 'Premium 4T motorcycle lubricants and engine oils for 70cc to 150cc bikes.', 1);
 
--- 4. Vehicles (Pakistan Market)
+-- 4. PAKISTANI MOTORCYCLE MAKES & MODELS
 INSERT INTO `vehicles` (`id`, `make`, `model`, `year_start`, `year_end`, `engine`, `fuel_type`) VALUES
-(1, 'Toyota', 'Corolla (XLi/GLi/Grande)', 2014, 2020, '1.3L / 1.6L / 1.8L 1ZR/2ZR-FE', 'Petrol'),
-(2, 'Toyota', 'Corolla (Altis / Grande)', 2008, 2014, '1.6L / 1.8L 1ZZ/2ZR', 'Petrol'),
-(3, 'Toyota', 'Yaris', 2020, 2024, '1.3L 1NR-FE / 1.5L 2NR-FE', 'Petrol'),
-(4, 'Honda', 'Civic (X / Turbo / Oriel)', 2016, 2021, '1.8L i-VTEC / 1.5L Turbo', 'Petrol'),
-(5, 'Honda', 'Civic (Reborn)', 2006, 2012, '1.8L R18A i-VTEC', 'Petrol'),
-(6, 'Honda', 'City (Aspire / i-DSI)', 2008, 2021, '1.3L / 1.5L L13Z / L15A', 'Petrol'),
-(7, 'Suzuki', 'Alto (660cc)', 2019, 2024, '658cc R06A', 'Petrol'),
-(8, 'Suzuki', 'Cultus (New Shape)', 2017, 2024, '1.0L K10B', 'Petrol'),
-(9, 'Suzuki', 'Wagon R', 2014, 2024, '1.0L K10B', 'Petrol'),
-(10, 'Suzuki', 'Mehran (Euro II)', 2012, 2019, '796cc F8B', 'Petrol'),
-(11, 'Suzuki', 'Swift', 2010, 2021, '1.3L M13A', 'Petrol'),
-(12, 'KIA', 'Sportage', 2019, 2024, '2.0L Nu MPI', 'Petrol'),
-(13, 'Hyundai', 'Tucson', 2020, 2024, '2.0L Smartstream MPI', 'Petrol'),
-(14, 'Honda', 'CD70 Motorcycle', 2012, 2024, '72cc 4-Stroke OHC', 'Petrol'),
-(15, 'Honda', 'CG125 Motorcycle', 2012, 2024, '124cc 4-Stroke OHV', 'Petrol'),
-(16, 'Yamaha', 'YBR125 Motorcycle', 2015, 2024, '124cc 4-Stroke SOHC', 'Petrol');
+-- Honda
+(1, 'Honda', 'CD 70', 2012, 2025, '72cc 4-Stroke OHC', 'Petrol'),
+(2, 'Honda', 'CD 70 Dream', 2014, 2024, '72cc 4-Stroke OHC', 'Petrol'),
+(3, 'Honda', 'Pridor 100', 2013, 2024, '97cc 4-Stroke OHC', 'Petrol'),
+(4, 'Honda', 'CG 125 (Kick Start)', 2010, 2025, '124cc 4-Stroke OHV (Euro II)', 'Petrol'),
+(5, 'Honda', 'CG 125 Self / Special Edition', 2019, 2025, '124cc 4-Stroke OHV 5-Speed', 'Petrol'),
+(6, 'Honda', 'CB 125F', 2019, 2024, '124cc 4-Stroke OHV 5-Speed', 'Petrol'),
+(7, 'Honda', 'CB 150F', 2017, 2024, '149cc 4-Stroke SOHC Balancer Engine', 'Petrol'),
 
--- 5. Products (12 High-detail Demo Spare Parts with Real Specs)
+-- Yamaha
+(8, 'Yamaha', 'YBR 125', 2015, 2025, '124cc 4-Stroke SOHC Balancer', 'Petrol'),
+(9, 'Yamaha', 'YBR 125G (Trail Edition)', 2016, 2025, '124cc 4-Stroke SOHC Balancer', 'Petrol'),
+(10, 'Yamaha', 'YB 125Z', 2017, 2024, '124cc 4-Stroke SOHC 5-Speed', 'Petrol'),
+(11, 'Yamaha', 'YB 125Z-DX (Disc Brake)', 2020, 2025, '124cc 4-Stroke SOHC Disc', 'Petrol'),
+
+-- Suzuki
+(12, 'Suzuki', 'GS 150', 2011, 2024, '150cc 4-Stroke SOHC 5-Speed', 'Petrol'),
+(13, 'Suzuki', 'GS 150 SE (Special Edition)', 2013, 2024, '150cc Alloy Wheels 5-Speed', 'Petrol'),
+(14, 'Suzuki', 'GD 110S', 2012, 2025, '113cc 4-Stroke SOHC Euro II', 'Petrol'),
+(15, 'Suzuki', 'GR 150', 2018, 2025, '149cc 4-Stroke SOHC Balancer', 'Petrol'),
+
+-- United & Chinese 70cc / 100cc / 125cc
+(16, 'United', 'US 70', 2012, 2025, '72cc 4-Stroke OHC', 'Petrol'),
+(17, 'United', 'US 125', 2016, 2024, '124cc 4-Stroke OHV', 'Petrol'),
+(18, 'Road Prince', 'RP 70 Passion', 2012, 2025, '72cc 4-Stroke OHC', 'Petrol'),
+(19, 'Road Prince', 'RP 110 Weego', 2015, 2023, '110cc 4-Stroke OHC', 'Petrol'),
+(20, 'Hi-Speed', 'Infinity 150', 2017, 2024, '149cc Cafe Racer', 'Petrol');
+
+-- 5. REALISTIC MOTORCYCLE SPARE PARTS (16 Essential Fast-Moving Items)
 INSERT INTO `products` (`id`, `name`, `slug`, `sku`, `oem_number`, `cross_references`, `brand_id`, `category_id`, `condition_type`, `warranty`, `short_description`, `description`, `price`, `compare_at_price`, `cost_price`, `stock_quantity`, `low_stock_threshold`, `is_featured`, `is_active`, `weight_kg`, `meta_title`, `meta_description`) VALUES
-(1, 'Toyota Genuine Oil Filter Element with O-Ring', 'toyota-oil-filter-04152-yzza6', 'TOY-FLT-001', '04152-YZZA6', '04152-37010, 04152-YZZA7, HU6006Z', 1, 4, 'Genuine', 'Guaranteed Genuine Toyota', 'Original Toyota oil filter element with synthetic micro-fiber media and heat-resistant gasket ring for Corolla and Yaris.', '<p>Ensure peak engine longevity with this 100% Genuine Toyota Oil Filter Element. Specially engineered with multi-density synthetic microfibers to capture 99% of particulate debris, carbon sludge, and microscopic metal shavings down to 20 microns without restricting oil pressure flow during cold starts in Pakistani summers and winters.</p><ul><li>Part Number: 04152-YZZA6</li><li>Direct factory fitment for Toyota Corolla (2014-2020) and Yaris</li><li>Includes high-temperature nitrile O-ring and drain adapter</li><li>Recommended change interval: 5,000 km with synthetic oil</li></ul>', 1850.00, 2200.00, 1400.00, 48, 5, 1, 1, 0.25, 'Toyota Corolla Oil Filter 04152-YZZA6 Price in Pakistan | PakAutoParts', 'Buy 100% Genuine Toyota Oil Filter 04152-YZZA6 for Corolla & Yaris in Pakistan. Fast COD nationwide delivery with warranty.'),
+(1, 'Atlas Honda CD70 Genuine Mikuni Carburetor Assembly', 'honda-cd70-genuine-carburetor', 'AHL-CRB-070', '16100-087-004', '16100-087-671, CD70-CRB-MIK', 1, 2, 'Genuine', '100% Genuine Atlas Honda Box', 'Original factory carburetor with precision brass jets, high fuel economy (60+ km/l), and smooth cold-start choke.', '<p>Restore maximum fuel economy and crisp throttle response with this 100% Genuine Atlas Honda CD70 Carburetor Assembly. Manufactured with precision Japanese Mikuni tooling, calibrated specifically for Pakistani 72cc 4-stroke engines and local fuel grades.</p><ul><li>Part Number: 16100-087-004</li><li>Compatible with Honda CD70 (all models), CD70 Dream, United 70, Road Prince 70</li><li>Includes pre-installed float, needle valve, main jet, and overflow hose</li><li>Factory tuned for optimal air-fuel ratio and easy kick-start</li></ul>', 4200.00, 4800.00, 3400.00, 35, 5, 1, 1, 0.65, 'Honda CD 70 Genuine Carburetor Price in Pakistan | PakBikeParts', 'Buy original Atlas Honda CD 70 carburetor in Pakistan. Best mileage, genuine hologram packaging, and fast COD delivery.'),
 
-(2, 'Denso Iridium Power Spark Plugs (Set of 4)', 'denso-iridium-spark-plugs-ik20', 'DEN-SPK-002', 'IK20-5304', 'BKR6EIX, 90919-01210, SK20R11', 4, 5, 'Genuine', '6-Month Warranty', 'High-performance 0.4mm ultra-fine iridium center electrode spark plugs for improved acceleration, fuel efficiency, and instant cold starting.', '<p>Denso Iridium Power IK20 spark plugs deliver the world\'s smallest 0.4mm laser-welded iridium tip, requiring less ignition voltage while generating a significantly hotter spark kernel. Experience instant throttle response, stabilized idling, and up to 5% better mileage on local RON 92 petrol.</p><ul><li>Electrode Diameter: 0.4mm Iridium</li><li>Thread Size: 14mm x 19mm Reach</li><li>Hex Size: 16mm (5/8 inch)</li><li>Compatible with Honda Civic Reborn, Toyota Corolla, and City</li></ul>', 7600.00, 8500.00, 6000.00, 24, 4, 1, 1, 0.35, 'Denso Iridium Spark Plugs IK20 Price in Pakistan | PakAutoParts', 'Order original Denso IK20 Iridium Power spark plugs pack of 4. Best fuel economy and ignition response for Honda & Toyota cars.'),
+(2, 'Atlas Honda CG125 Heavy-Duty Clutch & Friction Plate Set (5 Pcs)', 'honda-cg125-clutch-plate-set', 'AHL-CLT-125', '22201-107-000', 'FCC-CG125-CL, 22201-KCS-920', 1, 1, 'Genuine', 'Atlas Honda Guaranteed', 'Original 5-piece fiber clutch disc set engineered for maximum torque transfer, zero slippage, and smooth gear shifts.', '<p>Prevent clutch slippage and engine power loss under heavy acceleration with the official Atlas Honda CG125 Clutch Plate Set. Constructed from heat-resistant organic friction material with reinforced steel core plates to handle aggressive Pakistani riding conditions.</p><ul><li>Part Number: 22201-107-000</li><li>Direct fit for Honda CG125, CG125 Special Edition, and China 125cc bikes</li><li>Complete set of 5 friction plates</li><li>High heat resistance with zero clutch drag or wheel burn</li></ul>', 2850.00, 3400.00, 2200.00, 50, 8, 1, 1, 0.45, 'Honda CG 125 Genuine Clutch Plates Price in Pakistan | PakBikeParts', 'Original Atlas Honda CG125 clutch plates set of 5. Best pickup, genuine packing, nationwide Cash on Delivery.'),
 
-(3, 'AISIN Japan Front Ceramic Brake Pads Set', 'aisin-front-brake-pads-toyota-corolla', 'AIS-BRK-003', 'ASN-2064', '04465-02220, 04465-12610, D1210', 7, 2, 'OEM', '6-Month No-Noise Warranty', 'Ultra-low dust Japanese ceramic brake pad formulation providing quiet, consistent stopping power without rotor scoring.', '<p>Manufactured by AISIN Corporation (Toyota\'s tier-1 OEM braking supplier in Japan), these ceramic composite brake pads provide outstanding thermal dissipation, eliminating brake fade on motorways and city traffic. Designed specifically for low rotor wear, zero brake squeal, and minimal wheel dust.</p><ul><li>Material: Premium Japanese Ceramic Formulation</li><li>Backing Plate: Powder-coated steel with anti-rattle shims</li><li>Position: Front Left & Right (4 pads set)</li><li>Certified for Toyota Corolla GLi / Altis / Grande (2008-2020)</li></ul>', 5800.00, 6800.00, 4400.00, 32, 5, 1, 1, 1.60, 'AISIN Front Brake Pads for Toyota Corolla Price in Pakistan', 'Buy Japanese AISIN ceramic front brake pads for Toyota Corolla. Smooth, silent braking with complete anti-squeak shims.'),
+(3, 'Yamaha YBR 125 / YBR 125G Heavy-Duty 428H Chain & Sprocket Kit', 'yamaha-ybr125-chain-sprocket-kit', 'YGP-CHK-125', '5VL-E5381-00', '428H-118L, 14T-43T-YBR', 3, 3, 'Genuine', 'Yamaha Genuine Warranty', 'Heavy-duty 428H pre-lubricated drive chain with 14T front and 43T hardened rear sprockets for long life.', '<p>Eliminate chain slack and vibration on your Yamaha YBR. This complete drive chain & sprocket kit includes a heavy-duty 428H pre-stretched link chain paired with induction-hardened high-carbon steel sprockets for quiet, vibration-free highway cruising.</p><ul><li>Chain Spec: 428H Heavy-Duty (118 Links) with master link</li><li>Front Sprocket: 14 Teeth / Rear Sprocket: 43 Teeth</li><li>Direct fit for Yamaha YBR 125, YBR 125G, and YB 125Z</li><li>Up to 25,000 km operating lifespan with regular oiling</li></ul>', 5400.00, 6200.00, 4200.00, 20, 4, 1, 1, 1.85, 'Yamaha YBR 125 Chain Sprocket Kit Price in Pakistan | PakBikeParts', 'Buy original Yamaha YBR 125 / YBR 125G chain sprocket kit in Pakistan. Heavy-duty 428H drive kit with COD.'),
 
-(4, 'KYB Excel-G Front Shock Absorber Pair (Left + Right)', 'kyb-excel-g-front-shocks-honda-civic-x', 'KYB-SHK-004', '339414-339415', '51611-TBA-A01, 51621-TBA-A01', 8, 3, 'Genuine', '1-Year Warranty', 'Nitrogen gas-pressurized twin-tube struts engineered to restore factory ride stability, cornering grip, and road bump dampening.', '<p>KYB Excel-G shock absorbers are valved to compensate for worn suspension components, restoring your Honda Civic X to brand-new showroom ride quality. The multi-lip oil seal, Teflon coated piston band, and hard-chromed piston rod deliver superior longevity against rough road conditions in Pakistan.</p><ul><li>Type: Twin-Tube Gas Pressure Strut</li><li>Package Includes: 1x Front Right Strut + 1x Front Left Strut</li><li>Restores original vehicle control and steering responsiveness</li><li>Vehicle: Honda Civic 2016-2021 (All Variants)</li></ul>', 38500.00, 43000.00, 32000.00, 8, 2, 1, 1, 8.50, 'KYB Excel-G Front Shocks for Honda Civic X Price in Pakistan', 'Genuine KYB Japan front shock absorbers pair for Honda Civic Turbo & Oriel (2016-2021). Restore smooth, stable suspension handling.'),
+(4, 'Pak Suzuki GS150 OEM Digital CDI Ignition Unit', 'suzuki-gs150-cdi-unit', 'SGP-CDI-150', '32900-33G00', 'GS150-CDI-DIG, 32900-24B00', 4, 4, 'Genuine', 'Tested Suzuki Genuine', 'Microprocessor-controlled capacitive discharge ignition unit for instant revs, RPM advance, and reliable spark.', '<p>Fix RPM misfiring and high-speed hesitation on your Suzuki GS 150 with this genuine digital CDI box. Designed with built-in electronic timing advance curve to ensure optimal spark ignition across all throttle ranges.</p><ul><li>Part Number: 32900-33G00</li><li>Direct plug-and-play fitment for Suzuki GS150 and GS150 SE</li><li>Prevents engine missing above 7,000 RPM</li><li>Weatherproof sealed epoxy housing against rain and dust</li></ul>', 3600.00, 4200.00, 2700.00, 18, 3, 1, 1, 0.20, 'Suzuki GS 150 CDI Unit Price in Pakistan | PakBikeParts', 'Order original Pak Suzuki GS150 CDI ignition unit. Tested for instant ignition, genuine part, fast shipping.'),
 
-(5, 'Guard Engine Air Filter for Suzuki Alto 660cc', 'guard-air-filter-suzuki-alto-660cc', 'GRD-AIR-005', '13780-74P00', 'WA-1036, A-987', 9, 4, 'Aftermarket', '100% Quality Guaranteed', 'Precision-pleated high-airflow synthetic air filter designed to block fine dust while maintaining optimal intake flow for Suzuki Alto R06A engine.', '<p>Dust storms and highway smog in Pakistan drastically degrade engine performance and fuel efficiency. Guard Filters\' micro-pore non-woven media traps abrasive dirt down to 5 microns, protecting the Alto 660cc engine\'s turbo and intake manifold.</p><ul><li>OEM Part Reference: 13780-74P00</li><li>Direct drop-in replacement in factory airbox</li><li>Tested for high dust retention capacity</li><li>Compatible: Suzuki Alto 8th Gen (2019-2024 VXR/VXL/AGS)</li></ul>', 1150.00, 1400.00, 800.00, 65, 8, 1, 1, 0.40, 'Suzuki Alto 660cc Air Filter Price in Pakistan | Guard Filters', 'Buy high-efficiency air filter for Suzuki Alto 660cc 2019-2024. Guard filter ensures maximum engine protection and fuel economy.'),
+(5, 'NGK Japan D8EA Copper Core Spark Plug (for Honda CG125 / GS150)', 'ngk-d8ea-spark-plug', 'NGK-SPK-D8EA', 'D8EA-2120', 'DR8EA, X24ES-U, 98069-58716', 6, 4, 'Genuine', '100% Original NGK Japan', 'Standard copper core heat range 8 spark plug for Honda CG125, Suzuki GS150, and 125cc-150cc motorcycles.', '<p>The most popular spark plug in Pakistan for 125cc and 150cc motorcycles. Features 99% pure alumina silicate ceramic insulator and trivalent metal plating for superior anti-corrosion and anti-seizing properties in hot summers.</p><ul><li>Thread Size: 12mm / Thread Reach: 19mm (3/4")</li><li>Hex Size: 18mm (11/16")</li><li>Heat Range: 8</li><li>Fitment: Honda CG125, CB150F, Suzuki GS150, Yamaha YB125Z</li></ul>', 450.00, 550.00, 320.00, 120, 20, 1, 1, 0.06, 'NGK D8EA Spark Plug Price in Pakistan for CG 125 & GS 150', 'Buy original NGK Japan D8EA spark plug for CG 125 and GS 150. Authentic hologram stamp with nationwide delivery.'),
 
-(6, 'Bosch Clear Advantage All-Weather Beam Wiper Blades Pair', 'bosch-clear-advantage-wiper-blades-pair', 'BOS-WPR-006', 'BOS-CA-2414', '3397006501, AR601S', 6, 10, 'Genuine', '1-Season Warranty', 'Aerodynamic frameless beam wiper blades engineered with graphite-treated dual rubber edge for streak-free wiping in heavy monsoon rain.', '<p>Bosch Clear Advantage wipers feature an aerodynamic wind spoiler that prevents blade lift-off at motorway speeds (up to 130 km/h). The precision-tensioned internal steel spring distributes uniform pressure across the curved windshield for crystal clear visibility in extreme downpours.</p><ul><li>Sizes: 24 inch (Driver) + 14 inch (Passenger)</li><li>Universal J-Hook / U-Hook connector included</li><li>Resistant to intense summer UV heat cracking</li><li>Fits: Toyota Corolla, Honda Civic, Suzuki Swift, Kia Sportage</li></ul>', 2900.00, 3500.00, 2100.00, 40, 5, 1, 1, 0.50, 'Bosch Clear Advantage Wiper Blades Pair Price in Pakistan', 'All-weather graphite-coated beam wiper blades by Bosch. High visibility in heavy rain and dust. Fits Corolla, Civic, Sportage.'),
+(6, 'NGK Japan C7HSA Spark Plug (for Honda CD70 & China 70cc)', 'ngk-c7hsa-spark-plug', 'NGK-SPK-C7HSA', 'C7HSA-4629', 'CR7HSA, U22FS-U, 98056-57716', 6, 4, 'Genuine', '100% Original NGK Japan', 'Standard 10mm short reach spark plug engineered for 70cc and 100cc horizontal motorcycle engines.', '<p>The undisputed choice for Honda CD 70, CD 70 Dream, and all Chinese 70cc motorcycles. Deep copper core ensures rapid heat dissipation, eliminating pre-ignition and engine carbon deposits.</p><ul><li>Thread Size: 10mm / Thread Reach: 12.7mm (1/2")</li><li>Hex Size: 16mm (5/8")</li><li>Fitment: Honda CD70, Pridor 100, United 70, Road Prince 70</li></ul>', 380.00, 480.00, 260.00, 150, 25, 0, 1, 0.05, 'NGK C7HSA Spark Plug Price in Pakistan for CD 70', 'Original NGK C7HSA spark plug for Honda CD70 and 70cc bikes. Best fuel efficiency and easy starting.'),
 
-(7, 'Shell Helix Ultra 5W-40 Fully Synthetic Engine Oil (4 Litres)', 'shell-helix-ultra-5w40-synthetic-4l', 'SHL-OIL-007', 'SHL-HU-5W40-4L', 'API SP, ACEA A3/B4, MB 229.5', 10, 8, 'Genuine', 'Verified Shell Hologram Pack', 'PurePlus Technology fully synthetic motor oil formulated from natural gas to keep engine pistons 65% cleaner than industry benchmarks.', '<p>Shell Helix Ultra 5W-40 with Active Cleansing Technology actively locks away harmful deposits and reduces engine friction to deliver ultimate performance and fuel economy. Provides superior resistance to oil degradation even in peak 48°C Pakistani summer temperatures.</p><ul><li>Grade: SAE 5W-40 API SP / CF</li><li>Volume: 4 Litres Canister with scratch verification code</li><li>Protects against Low-Speed Pre-Ignition (LSPI) in turbocharged engines</li><li>Recommended for: Civic Turbo, Corolla Altis, Sportage, Tucson, Swift</li></ul>', 14200.00, 15800.00, 12200.00, 18, 3, 1, 1, 3.80, 'Shell Helix Ultra 5W-40 4L Engine Oil Price in Pakistan', 'Buy 100% original Shell Helix Ultra 5W-40 fully synthetic engine oil with verifiable scratch code. Ultimate engine protection.'),
+(7, 'Crown Lifan 70cc Complete Cylinder Block & Piston Kit', 'crown-70cc-cylinder-piston-kit', 'CRN-CYL-070', 'CRN-70-CYLKIT', '12100-087-000, CD70-CYL-STD', 2, 1, 'Aftermarket', 'Crown 3-Month Performance Warranty', 'Complete standard bore 47.0mm alloy cylinder barrel with matched piston, rings, gudgeon pin, and circlips.', '<p>Restore full engine compression and eliminate white exhaust smoke with the Crown Lifan 70cc Cylinder Kit. Cast from high-density aluminum alloy with cross-hatched cast-iron sleeve for long-term heat resistance and low oil consumption.</p><ul><li>Bore Size: 47.0mm (Standard STD 72cc)</li><li>Includes: Cylinder Block, Piston, Ring Set, Pin, Circlips, Head Gasket</li><li>Direct replacement for CD70, CD70 Dream, United 70, and Road Prince 70</li><li>Precision machined for smooth piston travel without engine knocking</li></ul>', 4800.00, 5600.00, 3600.00, 22, 4, 1, 1, 2.10, 'Crown 70cc Cylinder Piston Kit Price in Pakistan | PakBikeParts', 'Buy Crown Lifan 70cc cylinder block kit in Pakistan. Complete piston, rings and gaskets set with nationwide COD.'),
 
-(8, 'Suzuki Genuine Front Brake Disc Rotors Pair for Cultus & WagonR', 'suzuki-front-brake-disc-rotors-cultus-wagonr', 'SUZ-ROT-008', '55211-M68P00', 'DF7489, 55211-68K00', 3, 2, 'Genuine', '6-Month Factory Warranty', 'High-carbon cast iron brake discs dynamically balanced to prevent steering vibration, brake pulsation, and premature wear.', '<p>Don\'t compromise on safety. These Pak Suzuki certified front brake discs provide smooth, warp-resistant braking under heavy urban stop-and-go driving. Precision-ground friction faces ensure instantaneous brake pad bed-in.</p><ul><li>Part Number: 55211-M68P00</li><li>Material: G3000 Grade High-Carbon Cast Iron</li><li>Quantity: Pair (Left & Right Disc)</li><li>Fits: Suzuki Cultus (2017-2024) and Suzuki Wagon R (2014-2024)</li></ul>', 12500.00, 14500.00, 9800.00, 12, 2, 0, 1, 7.20, 'Suzuki Cultus & Wagon R Front Brake Discs Price in Pakistan', 'Original Suzuki Genuine front brake disc rotors pair for new Cultus and Wagon R. Factory guaranteed fitment and stopping power.'),
+(8, 'Atlas Honda CG125 Genuine Front & Rear Brake Shoe Set', 'honda-cg125-brake-shoe-set', 'AHL-BRK-125', '06430-107-000', 'AHL-06430-KCS-920, BRK-SH-CG', 1, 5, 'Genuine', 'Atlas Honda Genuine', 'Pair of asbestos-free high-friction brake shoes with return springs for responsive, squeak-free braking.', '<p>Keep your braking sharp and safe on city roads and highways. Genuine Atlas Honda brake shoes utilize non-asbestos friction lining formulated to prevent drum grooving while delivering instantaneous stopping power in wet or dry weather.</p><ul><li>Part Number: 06430-107-000</li><li>Fits both Front and Rear drums of Honda CG125 and CG125 Special Edition</li><li>Includes 2 heavy-duty tension return springs</li><li>Fade-resistant performance under repeated hard braking</li></ul>', 1250.00, 1500.00, 900.00, 60, 10, 1, 1, 0.35, 'Honda CG 125 Brake Shoes Price in Pakistan | PakBikeParts', '100% Genuine Atlas Honda CG125 brake shoe set. High safety stopping power, no squeak, COD across Pakistan.'),
 
-(9, 'Honda Genuine Engine Mount / Mounting (Front Right)', 'honda-civic-reborn-engine-mount-right', 'HON-MNT-009', '50820-SNA-033', '50820-SNA-P01, 50820-SVB-A03', 2, 1, 'Genuine', '6-Month Warranty', 'Hydraulic fluid-filled rubber engine mount engineered to absorb engine vibration and eliminate chassis shuddering during gear shifts.', '<p>The notorious right engine mount failure on Honda Civic Reborn causes violent steering wheel tremors and cabin rattle when stopped in \'D\' (Drive) gear. This genuine hydraulic fluid damper restores silky smooth cabin serenity.</p><ul><li>OEM Part: 50820-SNA-033</li><li>Fluid-filled internal hydraulic chamber</li><li>Heavy-duty stamped steel bracket</li><li>Fits: Honda Civic Reborn (2006-2012 1.8L Automatic & Manual)</li></ul>', 16800.00, 19500.00, 13500.00, 10, 2, 1, 1, 2.40, 'Honda Civic Reborn Right Engine Mount 50820-SNA-033 Price in Pakistan', 'Fix cabin vibration with Genuine Honda Civic Reborn right hydraulic engine mounting. Genuine OEM quality guaranteed.'),
+(9, 'Atlas Honda CD70 Complete Control Cables Kit (4 Cables)', 'honda-cd70-control-cables-kit', 'AHL-CBL-070', 'AHL-CBL-SET-70', '45450-087-000, 22870-087-000', 1, 5, 'Genuine', 'Atlas Honda Genuine', 'Complete set of 4 cables: Clutch cable, Throttle cable, Front brake cable, and Speedometer meter cable.', '<p>Replace worn or stiff cables with this complete 4-piece cable set. Teflon-lined outer sleeves ensure effortless clutch pull, razor-sharp throttle snap-back, and smooth speedometer needle movement.</p><ul><li>Includes: 1x Clutch Cable, 1x Throttle Cable, 1x Front Brake Cable, 1x Speedometer Cable</li><li>Fits all models of Honda CD 70 and Chinese 70cc motorcycles</li><li>Stainless steel inner wire with rust-proof galvanized fittings</li></ul>', 1150.00, 1450.00, 800.00, 40, 8, 0, 1, 0.40, 'Honda CD 70 Control Cables Set Price in Pakistan | PakBikeParts', 'Original Atlas Honda CD70 complete cables set (Clutch, Throttle, Brake, Meter). Best price with cash on delivery.'),
 
-(10, 'Denso Japanese Cabin AC Air Filter (Carbon Activated)', 'denso-cabin-ac-filter-toyota-honda', 'DEN-ACF-010', 'DCC1009', '87139-30040, 80292-TG0-T01', 4, 4, 'OEM', 'Fresh Air Guarantee', '4-stage electrostatically charged activated charcoal cabin filter that traps PM2.5 smog particles, pollens, diesel fumes, and foul odors.', '<p>Breathe clean air inside your vehicle. Denso\'s activated carbon layer neutralizes hazardous sulfur and nitrogen oxides commonly found in heavy city traffic, while keeping your car\'s AC cooling coil clean from dust clogging.</p><ul><li>Traps 98% of smog, dust, soot, and allergens</li><li>Enhances blower fan airflow efficiency</li><li>Recommended replacement: every 10,000 km or 6 months</li><li>Compatible: Corolla (2008-2020), Yaris, Civic, City, Alto</li></ul>', 1650.00, 2000.00, 1100.00, 50, 6, 0, 1, 0.30, 'Denso Cabin AC Air Filter for Toyota & Honda Price in Pakistan', 'Activated charcoal carbon AC cabin air filter by Denso. Cleans cabin air from smog, smoke, and odors. Fits Corolla, Civic, City.'),
+(10, 'Pak Suzuki GD110S Front Hydraulic Shock Absorber Assembly (Pair)', 'suzuki-gd110s-front-shocks-pair', 'SGP-SHK-110', '51100-24B00', 'GD110-FSHK-PR, 51100-33G00', 4, 6, 'Genuine', 'Pak Suzuki Genuine', 'Pair of complete front telescopic hydraulic shock assemblies with chrome stanchions and fork oil.', '<p>Restore plush, bump-free ride quality on your Suzuki GD 110S. These original factory-assembled front fork shocks feature multi-stage oil damping to absorb rough Pakistani potholes and speed breakers without bottoming out.</p><ul><li>Part Number: 51100-24B00</li><li>Direct bolt-on fitment for Suzuki GD110 and GD110S</li><li>Pre-filled with genuine Suzuki fork suspension oil</li><li>Hard-chromed inner tubes prevent oil seal leaks</li></ul>', 8900.00, 10500.00, 7200.00, 12, 2, 1, 1, 4.50, 'Suzuki GD 110S Front Shock Absorbers Price in Pakistan', 'Buy genuine Pak Suzuki GD110S front fork shocks pair in Pakistan. Smooth ride, 100% genuine parts on COD.'),
 
-(11, 'Honda Genuine Complete Clutch Kit for CG125 Motorcycle', 'honda-cg125-complete-clutch-kit', 'HON-CLT-011', '22201-107-000', 'CG-CLUTCH-GEN', 2, 1, 'Genuine', 'Genuine Atlas Honda Pack', 'Atlas Honda genuine friction plates and steel separator clutch assembly for crisp power transfer and zero slippage on CG125.', '<p>Restore maximum wheel torque and smooth gear transitions on your Honda CG125. High-tensile friction pads resist clutch burn out during heavy loads and stop-and-go city riding.</p><ul><li>Includes: 5x Friction Plates + 4x Steel Drive Plates</li><li>Engineered for 124cc OHV 4-Stroke engine</li><li>Direct Atlas Honda certified factory packaging</li><li>Vehicle: Honda CG125 & CG125 Dream (2012-2024)</li></ul>', 2450.00, 2800.00, 1850.00, 35, 5, 0, 1, 0.65, 'Atlas Honda Genuine Clutch Plates Kit for CG125 Price in Pakistan', 'Buy original Atlas Honda clutch plate set for CG125. Maximum torque transmission with zero clutch slip.'),
+(11, 'Atlas Honda CG125 Clear Lens Round Headlight Assembly', 'honda-cg125-headlight-assembly', 'AHL-LGT-125', '33100-107-000', 'CG125-HDL-CLR, 33100-KCS-920', 1, 7, 'Genuine', 'Atlas Honda Genuine', 'Complete round headlight with chrome bezel, clear glass lens, reflector housing, and 12V 35W halogen bulb.', '<p>Original factory front headlight unit for Honda CG125. Delivers focused, wide-beam illumination on dark highways without blinding oncoming traffic.</p><ul><li>Part Number: 33100-107-000</li><li>Includes clear heat-treated glass lens (non-yellowing), chrome rim, and 12V halogen bulb</li><li>Direct fit on all Honda CG 125 and CG 125 Special Edition models</li></ul>', 1950.00, 2400.00, 1400.00, 30, 5, 0, 1, 0.75, 'Honda CG 125 Headlight Assembly Price in Pakistan | PakBikeParts', 'Original Atlas Honda CG125 clear lens headlight unit. High-brightness beam with nationwide delivery.'),
 
-(12, 'NGK Laser Iridium Spark Plug for Honda CD70 & 70cc Bikes', 'ngk-c7hsa-iridium-spark-plug-cd70', 'NGK-SPK-012', 'CR7HIX-7544', 'C7HSA, CR7HSA', 5, 5, 'Genuine', '1-Year Reliability', '0.6mm laser-welded iridium spark plug providing lightning fast starts, smoother low-RPM idling, and carbon buildup resistance for 70cc engines.', '<p>Upgrade your standard copper spark plug to NGK Laser Iridium. Delivers instantaneous cold kicks, prevents spark plug fouling in winter mornings, and extends service life up to 30,000 km.</p><ul><li>Tip: Laser-welded Iridium center electrode with platinum ground pad</li><li>Thread Size: 10mm x 12.7mm</li><li>Hex: 16mm</li><li>Fits: Honda CD70, United 70, Road Prince 70, Yamaha YBR125</li></ul>', 2100.00, 2500.00, 1550.00, 55, 10, 0, 1, 0.10, 'NGK Laser Iridium Spark Plug for CD70 Bike Price in Pakistan', 'Original NGK CR7HIX Iridium spark plug for Honda CD70 & 70cc motorbikes. One-kick starting and enhanced fuel mileage.');
+(12, 'Crown Complete Wiring Harness for Honda CD70 (Euro II)', 'crown-cd70-wiring-harness', 'CRN-WIR-070', 'CRN-CD70-WIRE', '32100-087-000, CD70-WIR-E2', 2, 4, 'Aftermarket', 'Crown Quality Guarantee', 'Full motorcycle main wiring harness with color-coded copper wires, OEM couplers, and fuse holder.', '<p>End electrical shorts, flickering lights, and battery drain issues with this full replacement wiring loom. Built with 100% pure copper core strands and heavy-duty insulated vinyl wrapping matching original Honda wire color codes.</p><ul><li>Direct plug-and-play fit for Honda CD70 (Euro II models) and Chinese 70cc bikes</li><li>Water-resistant couplers prevent short-circuits during monsoon rains and bike wash</li><li>Includes inline glass fuse holder and pre-crimped earth grounds</li></ul>', 1800.00, 2200.00, 1300.00, 25, 4, 0, 1, 0.60, 'Crown CD 70 Complete Wiring Harness Price in Pakistan', 'Buy Crown Honda CD70 main wiring harness in Pakistan. 100% copper wires, plug and play couplers, COD.'),
 
--- 6. Product Fitment Compatibility Mapping
+(13, 'Panther 2.75-17 Rear Heavy-Duty Tubeless Motorcycle Tyre', 'panther-275-17-rear-motorcycle-tyre', 'PNT-TYR-27517', 'PNT-TREKKER-275', 'SER-275-17, GEN-TYR-125', 8, 9, 'Genuine', '6-Month Panther Warranty', 'Deep tread multi-ply rear tyre engineered for maximum traction on asphalt, rain, and gravel roads.', '<p>The most trusted rear motorcycle tyre size in Pakistan for 125cc motorcycles. Features deep directional tread grooves to channel water away, preventing hydroplaning while offering high puncture resistance against road debris.</p><ul><li>Size: 2.75-17 (Rear)</li><li>Ply Rating: 6 PR Heavy Duty</li><li>Compatible with Honda CG125, Yamaha YB125Z, United 125, Suzuki GS150</li><li>Tubeless ready (can also be used with standard 2.75-17 tube)</li></ul>', 5200.00, 5800.00, 4100.00, 25, 5, 1, 1, 3.20, 'Panther 2.75-17 Motorcycle Tyre Price in Pakistan | PakBikeParts', 'Buy Panther 2.75-17 rear tyre for Honda CG125 & 125cc bikes in Pakistan. Puncture resistant, COD delivery.'),
+
+(14, 'Servis 2.50-17 Front High-Grip Motorcycle Tyre', 'servis-250-17-front-motorcycle-tyre', 'SER-TYR-25017', 'SER-CRUISER-250', 'PNT-250-17, 2.50-17-F', 9, 9, 'Genuine', '6-Month Servis Warranty', 'Precision front steering tyre with straight center rib for agile maneuverability and high stability at speed.', '<p>Pakistan\'s standard front tyre for 70cc, 100cc, and 125cc bikes. The center circumferential groove delivers razor-sharp steering feedback while resisting uneven shoulder wear.</p><ul><li>Size: 2.50-17 (Front)</li><li>Ply Rating: 4 PR</li><li>Direct fitment for Honda CD70, CG125, Pridor 100, and all Chinese bikes</li></ul>', 4100.00, 4600.00, 3200.00, 30, 5, 0, 1, 2.60, 'Servis 2.50-17 Front Motorcycle Tyre Price in Pakistan', 'Original Servis 2.50-17 front tyre for CD70 and CG125. Long-lasting tread compound, nationwide COD.'),
+
+(15, 'Caltex Havoline 4T 20W-50 Motorcycle Engine Oil (0.7 Litre for CD70)', 'caltex-havoline-4t-20w50-0-7l', 'CTX-OIL-07L', 'CTX-HAV-4T-700', 'HAVOLINE-20W50-07, 4T-700ML', 10, 9, 'Genuine', '100% Genuine Caltex Pakistan', 'High-shear stability mineral engine oil formulated for 70cc motorcycles with wet-clutch protection.', '<p>Specially packaged in the exact 0.7 Litre capacity required for Honda CD70 and 70cc bikes to prevent over-filling. Contains Havoline Deposit Shield technology to keep bike engine components clean and prevent clutch slipping.</p><ul><li>Viscosity: SAE 20W-50 / Volume: 0.7 Litre (700ml)</li><li>API SL / JASO MA2 Certified (Highest wet clutch rating)</li><li>Perfect for Pakistani summer temperatures up to 48°C</li><li>Recommended change interval: 1,000 km - 1,200 km</li></ul>', 1050.00, 1200.00, 850.00, 80, 15, 1, 1, 0.70, 'Caltex Havoline 4T 0.7L Engine Oil Price in Pakistan for CD 70', 'Original Caltex Havoline 4T 20W50 700ml oil for CD 70. 100% genuine sealed bottle on cash on delivery.'),
+
+(16, 'Caltex Havoline 4T 20W-50 Premium Motorcycle Oil (1.0 Litre for CG125 / YBR)', 'caltex-havoline-4t-20w50-1-0l', 'CTX-OIL-10L', 'CTX-HAV-4T-1000', 'HAVOLINE-20W50-1L, 4T-1000ML', 10, 9, 'Genuine', '100% Genuine Caltex Pakistan', 'Full 1.0 Litre bottle for 125cc and 150cc motorcycles. Maximum thermal protection against engine overheating.', '<p>Recommended for Honda CG125, CB150F, Yamaha YBR125, and Suzuki GS150. Formulated to withstand the intense thermal stress of air-cooled overhead valve (OHV) engines in congested city traffic.</p><ul><li>Viscosity: SAE 20W-50 / Volume: 1.0 Litre (1000ml)</li><li>API SL / JASO MA2 Performance</li><li>Provides seamless gear shifts and silent tappet operation</li></ul>', 1450.00, 1650.00, 1150.00, 60, 12, 0, 1, 1.00, 'Caltex Havoline 4T 1.0L Engine Oil Price in Pakistan for CG 125 & YBR', 'Buy original Caltex Havoline 4T 1 Litre engine oil for CG125, YBR and GS150 in Pakistan. Fast COD.');
+
+-- 6. BIKE FITMENT MATRIX (product_fitment)
+-- Connect parts to compatible bike models
 INSERT INTO `product_fitment` (`product_id`, `vehicle_id`, `notes`) VALUES
-(1, 1, 'Fits all 1.3L, 1.6L and 1.8L variants (2014-2020)'),
-(1, 2, 'Fits all 1.6L and 1.8L Altis variants'),
-(1, 3, 'Fits both 1.3L and 1.5L Yaris engines'),
-(2, 1, 'Recommended gap: 1.1mm'),
-(2, 4, 'Pre-gapped for 1.8L i-VTEC'),
-(2, 5, 'Exact factory heat range specification'),
-(2, 6, 'Optimal ignition performance'),
-(3, 1, 'Front axle only; includes wear indicator'),
-(3, 2, 'Direct OE replacement'),
-(3, 3, 'Confirmed compatibility'),
-(4, 4, 'Fits all 1.8L Oriel and 1.5L Turbo variants'),
-(5, 7, 'Exact airbox drop-in fit for Suzuki Alto 660cc'),
-(6, 1, 'Driver 24\" + Passenger 14\"'),
-(6, 4, 'Driver 24\" + Passenger 14\"'),
-(6, 12, 'Driver 24\" + Passenger 14\"'),
-(7, 1, 'Recommended oil viscosity for high mileage'),
-(7, 4, 'Exceptional protection against LSPI in turbo'),
-(7, 12, 'Meets MPI engine requirements'),
-(8, 8, 'Fits Cultus 2017+ VXR/VXL/AGS models'),
-(8, 9, 'Fits all Wagon R 2014+ models'),
-(9, 5, 'Hydraulic fluid filled right side mount'),
-(10, 1, 'Installed behind glove box'),
-(10, 4, 'Quick 5-minute install'),
-(10, 6, 'Perfect cabin fit'),
-(11, 15, 'Complete 5-plate clutch assembly for CG125'),
-(12, 14, 'Fits all 70cc 4-stroke Chinese & Japanese bikes'),
-(12, 16, 'Compatible plug reach for YBR125');
+-- CD70 Carburetor fits CD70, CD70 Dream, United 70, Road Prince 70
+(1, 1, 'Direct bolt-on replacement for stock carburetor'),
+(1, 2, 'Direct fitment for CD70 Dream'),
+(1, 16, 'Compatible with United US 70'),
+(1, 18, 'Compatible with Road Prince 70 Passion'),
 
--- 7. Product Price Tiers (Wholesale for Workshops & Mechanics)
-INSERT INTO `product_price_tiers` (`product_id`, `min_qty`, `unit_price`) VALUES
-(1, 3, 1750.00),
-(1, 10, 1600.00),
-(2, 2, 7200.00),
-(2, 5, 6800.00),
-(3, 2, 5400.00),
-(3, 5, 5000.00),
-(4, 2, 36500.00),
-(5, 5, 1050.00),
-(5, 20, 950.00),
-(6, 3, 2600.00),
-(7, 3, 13500.00),
-(8, 2, 11800.00),
-(10, 5, 1450.00),
-(11, 3, 2250.00),
-(12, 5, 1900.00);
+-- CG125 Clutch Set fits CG125, CG125 Self, CB125F, United 125
+(2, 4, 'Full 5-plate set for kick-start CG125'),
+(2, 5, 'Compatible with 5-speed CG125 Self/Special'),
+(2, 6, 'Compatible with CB125F'),
+(2, 17, 'Fits United US 125 engine'),
 
--- 8. Coupons
-INSERT INTO `coupons` (`id`, `code`, `discount_type`, `discount_value`, `min_spend`, `max_discount`, `usage_limit`, `usage_count`, `start_date`, `expiry_date`, `is_active`) VALUES
-(1, 'PAKSAVE10', 'percent', 10.00, 3000.00, 1500.00, 500, 12, '2026-01-01', '2026-12-31', 1),
-(2, 'FIRST500', 'fixed', 500.00, 5000.00, 500.00, 1000, 45, '2026-01-01', '2026-12-31', 1);
+-- YBR125 Chain Sprocket Kit fits YBR 125, YBR 125G, YB 125Z
+(3, 8, 'Standard replacement 14T-43T 428H-118L'),
+(3, 9, 'Heavy-duty fitment for YBR 125G trail'),
+(3, 10, 'Direct fit for YB 125Z'),
+(3, 11, 'Direct fit for YB 125Z-DX'),
 
--- 9. Shipping Rates by City
-INSERT INTO `shipping_rates` (`id`, `city`, `province`, `standard_rate`, `cod_fee`, `free_threshold`, `delivery_days`) VALUES
-(1, 'Lahore', 'Punjab', 150.00, 30.00, 4000.00, 'Same Day / Next Day'),
-(2, 'Karachi', 'Sindh', 250.00, 50.00, 5000.00, '2-3 Working Days'),
-(3, 'Islamabad', 'Federal', 200.00, 40.00, 4500.00, '1-2 Working Days'),
-(4, 'Rawalpindi', 'Punjab', 200.00, 40.00, 4500.00, '1-2 Working Days'),
-(5, 'Faisalabad', 'Punjab', 200.00, 40.00, 4500.00, '1-2 Working Days'),
-(6, 'Multan', 'Punjab', 220.00, 45.00, 5000.00, '2 Working Days'),
-(7, 'Peshawar', 'KPK', 250.00, 50.00, 5000.00, '2-3 Working Days'),
-(8, 'Quetta', 'Balochistan', 350.00, 70.00, 7000.00, '3-5 Working Days'),
-(9, 'Gujranwala', 'Punjab', 180.00, 40.00, 4500.00, '1-2 Working Days'),
-(10, 'Sialkot', 'Punjab', 180.00, 40.00, 4500.00, '1-2 Working Days'),
-(11, 'Rest of Pakistan', 'All', 280.00, 60.00, 6000.00, '3-5 Working Days');
+-- GS150 CDI Unit fits GS150, GS150 SE
+(4, 12, 'Digital advance ignition unit for GS 150'),
+(4, 13, 'Fits GS 150 SE'),
+
+-- NGK D8EA Plug fits CG125, CB150F, GS150, YB125Z
+(5, 4, 'Recommended standard heat range 8 spark plug'),
+(5, 5, 'Standard spark plug for CG125 Self'),
+(5, 7, 'Compatible with CB 150F'),
+(5, 12, 'Standard plug for Suzuki GS 150'),
+
+-- NGK C7HSA Plug fits CD70, Pridor, United 70, Road Prince 70
+(6, 1, 'Standard spark plug for Honda CD70'),
+(6, 2, 'Standard spark plug for CD70 Dream'),
+(6, 3, 'Compatible with Pridor 100'),
+(6, 16, 'Fits United US 70'),
+(6, 18, 'Fits Road Prince 70'),
+
+-- Crown 70cc Cylinder fits CD70, CD70 Dream, United 70, Road Prince 70
+(7, 1, 'Standard 47.0mm bore STD barrel and piston'),
+(7, 2, 'Fits CD70 Dream'),
+(7, 16, 'Fits United US 70'),
+(7, 18, 'Fits Road Prince 70'),
+
+-- CG125 Brake Shoes fit CG125, CG125 Self
+(8, 4, 'Fits both Front & Rear brake drums'),
+(8, 5, 'Fits Rear drum on CG125 Self'),
+
+-- CD70 Cable Set fits CD70
+(9, 1, 'Complete 4-piece cable set'),
+(9, 16, 'Fits United US 70'),
+
+-- GD110S Front Shocks fit GD110S
+(10, 14, 'Factory replacement front shock fork pair'),
+
+-- CG125 Headlight fits CG125
+(11, 4, 'Round headlight assembly with chrome rim'),
+(11, 5, 'Direct fit for CG125 Special Edition'),
+
+-- CD70 Wiring Harness fits CD70
+(12, 1, 'Euro II compliant main wiring loom'),
+(12, 16, 'Compatible with United US 70 Euro II'),
+
+-- Panther 2.75-17 Rear Tyre fits CG125, YB125Z, GS150
+(13, 4, 'Standard rear tyre size for Honda CG 125'),
+(13, 10, 'Standard rear tyre size for Yamaha YB 125Z'),
+(13, 12, 'Standard rear tyre size for Suzuki GS 150'),
+
+-- Servis 2.50-17 Front Tyre fits CD70, CG125
+(14, 1, 'Rear size for CD70 or Front size for CG125'),
+(14, 4, 'Standard front tyre for Honda CG 125'),
+
+-- Caltex 0.7L fits CD70
+(15, 1, 'Exact 700ml sump capacity for Honda CD 70'),
+(15, 2, 'Exact 700ml sump capacity for CD 70 Dream'),
+
+-- Caltex 1.0L fits CG125, YBR, GS150
+(16, 4, '1.0L capacity for Honda CG 125'),
+(16, 8, '1.0L capacity for Yamaha YBR 125'),
+(16, 12, '1.0L capacity for Suzuki GS 150');
+
+-- 7. WHOLESALE MECHANIC TIER PRICING (Bulk discounts for local motorcycle workshops)
+INSERT INTO `product_price_tiers` (`product_id`, `min_quantity`, `price_per_unit`) VALUES
+-- CD70 Carburetor: Buy 3+ @ Rs. 3,950, Buy 5+ @ Rs. 3,800
+(1, 3, 3950.00),
+(1, 5, 3800.00),
+
+-- CG125 Clutch Set: Buy 5+ @ Rs. 2,650, Buy 10+ @ Rs. 2,500
+(2, 5, 2650.00),
+(2, 10, 2500.00),
+
+-- NGK D8EA Plugs: Buy 10+ (Box) @ Rs. 390
+(5, 10, 390.00),
+
+-- NGK C7HSA Plugs: Buy 10+ (Box) @ Rs. 330
+(6, 10, 330.00),
+
+-- CG125 Brake Shoes: Buy 5+ @ Rs. 1,100, Buy 10+ @ Rs. 1,000
+(8, 5, 1100.00),
+(8, 10, 1000.00);
+
+-- 8. UPDATE STORE SETTINGS FOR MOTORCYCLE FOCUS
+INSERT INTO `settings` (`setting_group`, `setting_key`, `setting_value`) VALUES
+('general', 'site_name', 'PakBikeParts'),
+('general', 'site_tagline', '100% Genuine & OEM Motorcycle Spare Parts Pakistan'),
+('general', 'announcement_banner', '⚡ Free Nationwide Shipping on Motorcycle Parts over Rs. 3,000 | Cash on Delivery (COD) Available'),
+('general', 'contact_whatsapp', '923001234567'),
+('general', 'contact_phone', '0300-1234567'),
+('general', 'contact_email', 'support@pakbikeparts.pk'),
+('general', 'contact_address', 'Plaza #28, Auto & Bike Market, Montgomery Road, Lahore, Pakistan')
+ON DUPLICATE KEY UPDATE `setting_value` = VALUES(`setting_value`);
+
 
 -- 10. Sample Customer Reviews
-INSERT INTO `reviews` (`id`, `product_id`, `customer_name`, `customer_email`, `customer_phone`, `rating`, `comment`, `is_approved`) VALUES
-(1, 1, 'Tariq Mehmood', 'tariq.lahore@gmail.com', '03008456123', 5, 'Received 100% genuine Toyota element in original red box with QR code. Fitted perfectly in my 2017 Corolla GLi. Fast delivery via TCS in Lahore!', 1),
-(2, 2, 'Farhan Zaidi', 'farhan.khi@yahoo.com', '03212349876', 5, 'Replaced standard copper plugs in Civic Reborn with these Denso Iridiums. Engine idling is super smooth now, and throttle lag has disappeared completely.', 1),
-(3, 3, 'Asad Ullah Khan', 'asad.isb@hotmail.com', '03335123456', 5, 'Japanese AISIN pads are completely noise free. No black dust on my alloy rims even after 1,000 km motorway drive. Highly recommended seller!', 1),
-(4, 5, 'Usman Bilal', 'usman.alto@gmail.com', '03454789123', 5, 'Guard filter fits Alto 660cc airbox snugly. Quality is equivalent to Japanese imported filter at one-third the price.', 1);
+INSERT INTO 
+eviews (id, product_id, customer_name, customer_email, customer_phone, 
+ating, comment, is_approved) VALUES
+(1, 1, 'Khurram Shehzad', 'khurram.lhr@gmail.com', '03008456123', 5, 'Received 100% genuine Atlas Honda CD70 carburetor in original red box. Mileage went from 45km/l to 62km/l! Fast delivery in Lahore.', 1),
+(2, 2, 'Zeeshan Butt', 'zeeshan.rwp@yahoo.com', '03212349876', 5, 'Fitted these clutch plates on my CG125. Acceleration is instant, zero clutch slip on flyovers even with a pillion passenger.', 1),
+(3, 3, 'Adeel Munir', 'adeel.khi@hotmail.com', '03335123456', 5, 'YBR chain sprocket kit is 100% genuine. Heavy duty 428H chain removed all vibrations on high speed cruising.', 1),
+(4, 5, 'Rana Kamran', 'kamran.fsd@gmail.com', '03454789123', 5, 'Original NGK D8EA spark plug. Starts CG 125 in half a kick in cold winter mornings. Authentic hologram stamped.', 1);
 
--- 11. Blog Categories & Posts
-INSERT INTO `blog_categories` (`id`, `name`, `slug`) VALUES
-(1, 'Maintenance Guides', 'maintenance-guides'),
+-- 11. Motorcycle Blog Posts
+INSERT INTO log_categories (id, 
+ame, slug) VALUES
+(1, 'Bike Maintenance', 'bike-maintenance'),
 (2, 'Buying Advice', 'buying-advice'),
-(3, 'Counterfeit Warnings', 'counterfeit-warnings');
+(3, 'Genuine vs Fake Guides', 'genuine-vs-fake');
 
-INSERT INTO `blog_posts` (`id`, `title`, `slug`, `excerpt`, `content`, `featured_image`, `category_id`, `tags`, `reading_time_min`, `focus_keyword`, `meta_title`, `meta_description`, `is_published`, `published_at`) VALUES
-(1, 'How to Spot Fake vs Genuine Toyota Spare Parts in Pakistan', 'how-to-spot-fake-toyota-parts-pakistan', 'A comprehensive step-by-step visual guide to identifying counterfeit Toyota oil filters, brake pads, and spark plugs in local Pakistani markets.', '<h2>The Epidemic of Counterfeit Auto Parts</h2><p>Auto markets like Montgomery Road Lahore, Sultan Ka Khoo Rawalpindi, and Plaza Karachi are flooded with counterfeit Toyota and Honda spare parts. Installing a cheap copy can lead to catastrophic engine seizure or brake failure.</p><h3>1. Packaging Fonts and Hologram Quality</h3><p>Genuine Toyota packaging utilizes crisp, dark red typography with consistent kerning. Fake boxes often have blurry barcode labels, faded ink, and flimsy cardboard.</p><h3>2. The Oil Filter Micron Test</h3><p>Counterfeit oil filters use cheap porous paper that collapses under high oil pump pressure, allowing unfiltered metal grit to circulate through your engine bearings. Genuine filters use synthetic non-woven pleated media with an internal bypass safety valve.</p><h3>3. QR Verification and Holographic Tape</h3><p>Always inspect the tamper-evident holographic security seal. Genuine seals reflect rainbow spectrums and cannot be peeled off cleanly without leaving a honeycomb pattern.</p>', '/assets/images/blog-toyota-fake.webp', 3, 'Toyota, Spare Parts, Counterfeit, Guide', 5, 'fake vs genuine toyota parts pakistan', 'How to Spot Fake Toyota Spare Parts in Pakistan | PakAutoParts', 'Learn how to identify fake vs original Toyota spare parts in Pakistan. Avoid engine damage with our comprehensive guide.', 1, '2026-10-15 10:00:00'),
+INSERT INTO log_posts (id, 	itle, slug, excerpt, content, eatured_image, category_id, 	ags, 
+eading_time_min, ocus_keyword, meta_title, meta_description, is_published, published_at) VALUES
+(1, 'How to Spot Fake vs Genuine Atlas Honda Motorcycle Parts in Pakistan', 'how-to-spot-fake-honda-parts-pakistan', 'A visual guide to identifying counterfeit Honda CD70 and CG125 spare parts in local Pakistani markets.', '<h2>The Counterfeit Bike Parts Problem</h2><p>Local markets across Pakistan are full of fake copy parts packed in replicated Atlas Honda boxes. Using fake clutch plates or low-quality carburetors drastically hurts your engine lifespan.</p><h3>1. Packaging and Holographic Security Tape</h3><p>Genuine Atlas Honda boxes feature crisp, sharp typography with verifiable barcode stickers. Genuine holographic tape changes color and leaves a tamper-evident honeycomb residue if peeled.</p><h3>2. The Clutch Plate Fiber Test</h3><p>Original Honda clutch plates use imported Japanese FCC heat-resistant friction discs. Low-grade copies use pressed cardboard fiber that burns and disintegrates inside your engine oil within 500 km.</p>', '/assets/images/placeholder.svg', 3, 'Honda, CG125, CD70, Genuine, Guide', 4, 'fake vs genuine honda parts pakistan', 'How to Spot Fake Honda Motorcycle Parts in Pakistan | PakBikeParts', 'Learn how to detect fake vs original Atlas Honda bike parts in Pakistan.', 1, '2026-10-15 10:00:00'),
 
-(2, 'Best Engine Oil for Cars in Pakistan: Viscosity and Summer Driving Guide', 'best-engine-oil-for-cars-in-pakistan', 'Choosing the correct engine oil grade (0W-20 vs 5W-30 vs 10W-40) for Pakistani summers, extreme heat, and local RON 92 fuel quality.', '<h2>Why Extreme Heat Demands Superior Engine Lubrication</h2><p>When ambient temperatures reach 45°C in Multan, Lahore, and Sukkur, engine oil temperatures can exceed 115°C inside the cylinder head. Low quality mineral oils rapidly oxidize, turning into abrasive black sludge.</p><h3>Modern Japanese Cars (Alto, Yaris, Civic Turbo)</h3><p>Modern engines with variable valve timing (Dual VVT-i, VTEC) feature ultra-tight mechanical clearances. They require 0W-20 or 5W-30 fully synthetic motor oils with API SP certification to prevent Low-Speed Pre-Ignition (LSPI).</p><h3>High Mileage Vehicles (Above 120,000 km)</h3><p>If your engine has accumulated over 120,000 kilometers and shows slight oil consumption between changes, transitioning to a high-shear 5W-40 synthetic oil provides superior piston ring sealing and hydraulic cushion.</p>', '/assets/images/blog-oil-guide.webp', 1, 'Engine Oil, Shell, Maintenance, Summer', 6, 'best engine oil for cars in pakistan', 'Best Engine Oil for Cars in Pakistan (2026 Guide) | PakAutoParts', 'Find the best engine oil for your car in Pakistan. Learn when to use 0W-20, 5W-30 or 5W-40 in harsh summer heat.', 1, '2026-10-20 14:30:00');
+(2, 'Best 4T Engine Oil for CD 70 and CG 125 in Harsh Pakistani Summers', 'best-engine-oil-motorcycles-pakistan', 'Recommended oil viscosity grades (20W-50 vs 10W-40) and change intervals for Honda, Yamaha, and Suzuki bikes.', '<h2>Why Extreme Heat Destroys Low-Grade Bike Oils</h2><p>Air-cooled motorcycle engines in Pakistan run at blistering temperatures up to 130°C in stop-and-go traffic during summer. Low quality oil loses viscosity and leads to piston ring seizing.</p><h3>Recommended Oil Grades</h3><p>For horizontal 70cc engines (CD70, United 70), SAE 20W-50 JASO MA2 is the optimal specification. Always adhere strictly to the 0.7 Litre sump capacity to prevent oil foaming and clutch slippage.</p>', '/assets/images/placeholder.svg', 1, 'Engine Oil, CD70, CG125, Maintenance', 5, 'best bike engine oil pakistan', 'Best Motorcycle Engine Oil for CD 70 & CG 125 in Pakistan (2026 Guide)', 'Expert guide on choosing the right 4T engine oil for motorcycles in Pakistan.', 1, '2026-10-20 14:30:00');
 
--- 12. System Settings
-INSERT INTO `settings` (`setting_group`, `setting_key`, `setting_value`) VALUES
-('general', 'site_name', 'PakAutoParts'),
-('general', 'site_tagline', 'Pakistan\'s Premier Auto Spare Parts Network'),
-('general', 'site_logo', '/assets/images/logo.svg'),
-('general', 'contact_phone', '0300-1234567'),
-('general', 'contact_whatsapp', '923001234567'),
-('general', 'contact_email', 'support@pakautoparts.pk'),
-('general', 'contact_address', 'Plaza #14, Auto Market, Montgomery Road, Lahore, Pakistan'),
-('general', 'announcement_banner', '⚡ Free Nationwide Shipping on all orders above Rs. 5,000! Cash on Delivery available.'),
-('payment', 'bank_name', 'Meezan Bank Limited'),
-('payment', 'bank_title', 'PAK AUTO PARTS TRADERS'),
-('payment', 'bank_account_no', '02010108923412'),
-('payment', 'bank_iban', 'PK45MEZN0002010108923412'),
-('payment', 'jazzcash_title', 'Muhammad Usman (PakAutoParts)'),
-('payment', 'jazzcash_no', '03001234567'),
-('payment', 'easypaisa_title', 'Muhammad Usman (PakAutoParts)'),
-('payment', 'easypaisa_no', '03001234567'),
-('shipping', 'default_shipping_fee', '250'),
-('shipping', 'cod_fee', '50'),
-('shipping', 'free_shipping_min', '5000');
+-- 12. Default Admin User (password: Admin@12345)
+INSERT INTO users (id, 
+ame, email, password_hash, 
+ole) VALUES
+(1, 'System Administrator', 'admin@pakbikeparts.pk', '/d4q.U/v9Y2qC4yR3X1W8J2G8zJ9Gy', 'owner');
 
+-- 13. Coupons & Shipping
+INSERT INTO coupons (id, code, discount_type, discount_value, min_spend, max_discount, usage_limit, usage_count, start_date, expiry_date, is_active) VALUES
+(1, 'BIKESAVE10', 'percent', 10.00, 2000.00, 1000.00, 500, 12, '2026-01-01', '2026-12-31', 1),
+(2, 'FIRST300', 'fixed', 300.00, 3000.00, 300.00, 1000, 45, '2026-01-01', '2026-12-31', 1);
+
+INSERT INTO shipping_rates (id, city, province, standard_rate, cod_fee, ree_threshold, delivery_days) VALUES
+(1, 'Lahore', 'Punjab', 150.00, 30.00, 3000.00, 'Same Day / Next Day'),
+(2, 'Karachi', 'Sindh', 250.00, 50.00, 4000.00, '2-3 Working Days'),
+(3, 'Islamabad', 'Federal', 200.00, 40.00, 3500.00, '1-2 Working Days'),
+(4, 'Rawalpindi', 'Punjab', 200.00, 40.00, 3500.00, '1-2 Working Days'),
+(5, 'Faisalabad', 'Punjab', 200.00, 40.00, 3500.00, '1-2 Working Days'),
+(6, 'Multan', 'Punjab', 220.00, 45.00, 4000.00, '2 Working Days'),
+(7, 'Peshawar', 'KPK', 250.00, 50.00, 4000.00, '2-3 Working Days'),
+(8, 'Quetta', 'Balochistan', 300.00, 60.00, 5000.00, '3-5 Working Days'),
+(9, 'Gujranwala', 'Punjab', 180.00, 40.00, 3500.00, '1-2 Working Days'),
+(10, 'Sialkot', 'Punjab', 180.00, 40.00, 3500.00, '1-2 Working Days'),
+(11, 'Rest of Pakistan', 'All', 250.00, 50.00, 4500.00, '3-5 Working Days');

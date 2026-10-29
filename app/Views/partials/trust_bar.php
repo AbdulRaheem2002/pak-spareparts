@@ -32,7 +32,7 @@
         </div>
         <div>
           <h4 class="text-sm font-bold uppercase tracking-wider text-slate-900 font-condensed">7-Day Guarantee</h4>
-          <p class="text-xs text-slate-500 mt-0.5">Hassle-free return &amp; exchange if the part doesn't fit your car.</p>
+          <p class="text-xs text-slate-500 mt-0.5">Hassle-free return &amp; exchange if the part doesn't fit your bike.</p>
         </div>
       </div>
 
@@ -43,7 +43,7 @@
         </div>
         <div>
           <h4 class="text-sm font-bold uppercase tracking-wider text-slate-900 font-condensed">Expert WhatsApp Support</h4>
-          <p class="text-xs text-slate-500 mt-0.5">Send your car chassis / VIN number for verified part matching.</p>
+          <p class="text-xs text-slate-500 mt-0.5">Send your bike model or frame/chassis number for verified part matching.</p>
         </div>
       </div>
 

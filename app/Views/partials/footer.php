@@ -9,13 +9,13 @@
           <img src="<?= asset('assets/images/logo.svg') ?>" alt="PakAutoParts" class="h-10 w-auto brightness-200">
         </a>
         <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
-          Pakistan's premier direct-to-consumer and workshop auto spare parts platform. Supplying verified genuine, OEM, and performance replacement components nationwide with guaranteed vehicle fitment.
+          Pakistan's premier direct-to-consumer and workshop motorcycle spare parts platform. Supplying verified genuine, OEM, and performance replacement bike components nationwide with guaranteed fitment.
         </p>
 
         <div class="space-y-2 text-xs pt-2">
           <div class="flex items-center gap-2">
             <span class="text-brand-500 font-bold">📍</span>
-            <span><?= e(setting('contact_address', 'Plaza #14, Auto Market, Montgomery Road, Lahore, Pakistan')) ?></span>
+            <span><?= e(setting('contact_address', 'Plaza #28, Auto & Bike Market, Montgomery Road, Lahore, Pakistan')) ?></span>
           </div>
           <div class="flex items-center gap-2">
             <span class="text-brand-500 font-bold">📞</span>
@@ -31,8 +31,8 @@
           </div>
           <div class="flex items-center gap-2">
             <span class="text-brand-500 font-bold">✉️</span>
-            <a href="mailto:<?= e(setting('contact_email', 'support@pakautoparts.pk')) ?>" class="text-slate-200 hover:text-brand-400">
-              <?= e(setting('contact_email', 'support@pakautoparts.pk')) ?>
+            <a href="mailto:<?= e(setting('contact_email', 'support@pakbikeparts.pk')) ?>" class="text-slate-200 hover:text-brand-400">
+              <?= e(setting('contact_email', 'support@pakbikeparts.pk')) ?>
             </a>
           </div>
         </div>
@@ -41,31 +41,31 @@
       <!-- Column 2: Popular Categories -->
       <div>
         <h4 class="text-xs font-bold uppercase tracking-wider text-white font-condensed mb-4 border-l-2 border-brand-500 pl-2.5">
-          Categories
+          Bike Categories
         </h4>
         <ul class="space-y-2 text-xs">
-          <li><a href="/category/engine-components" class="hover:text-white transition-colors">Engine Components</a></li>
-          <li><a href="/category/brake-system" class="hover:text-white transition-colors">Brake Pads &amp; Rotors</a></li>
-          <li><a href="/category/suspension-steering" class="hover:text-white transition-colors">Shock Absorbers</a></li>
-          <li><a href="/category/filters-maintenance" class="hover:text-white transition-colors">Filters &amp; Maintenance</a></li>
-          <li><a href="/category/electrical-ignition" class="hover:text-white transition-colors">Spark Plugs &amp; Coils</a></li>
-          <li><a href="/category/oils-lubricants" class="hover:text-white transition-colors">Synthetic Motor Oils</a></li>
-          <li><a href="/category/lighting-bulbs" class="hover:text-white transition-colors">Headlights &amp; LEDs</a></li>
+          <li><a href="/category/engine-cylinder" class="hover:text-white transition-colors">Engine &amp; Cylinder</a></li>
+          <li><a href="/category/carburetor-fuel" class="hover:text-white transition-colors">Carburetors &amp; Fuel</a></li>
+          <li><a href="/category/drive-transmission" class="hover:text-white transition-colors">Chain &amp; Sprockets</a></li>
+          <li><a href="/category/electrical-ignition" class="hover:text-white transition-colors">CDI Units &amp; Spark Plugs</a></li>
+          <li><a href="/category/brakes-cables" class="hover:text-white transition-colors">Brake Shoes &amp; Cables</a></li>
+          <li><a href="/category/suspension-handling" class="hover:text-white transition-colors">Shocks &amp; Suspension</a></li>
+          <li><a href="/category/tyres-tubes-oils" class="hover:text-white transition-colors">Tyres &amp; 4T Engine Oils</a></li>
         </ul>
       </div>
 
-      <!-- Column 3: Popular Makes & Models -->
+      <!-- Column 3: Popular Bikes -->
       <div>
         <h4 class="text-xs font-bold uppercase tracking-wider text-white font-condensed mb-4 border-l-2 border-brand-500 pl-2.5">
-          Popular Vehicles
+          Popular Bikes
         </h4>
         <ul class="space-y-2 text-xs">
-          <li><a href="/parts/Toyota/Corolla/2018" class="hover:text-white transition-colors">Toyota Corolla Parts</a></li>
-          <li><a href="/parts/Honda/Civic/2019" class="hover:text-white transition-colors">Honda Civic X Parts</a></li>
-          <li><a href="/parts/Suzuki/Alto/2021" class="hover:text-white transition-colors">Suzuki Alto 660cc Parts</a></li>
-          <li><a href="/parts/Suzuki/Cultus/2020" class="hover:text-white transition-colors">Suzuki Cultus Parts</a></li>
-          <li><a href="/parts/Honda/CG125/2022" class="hover:text-white transition-colors">Honda CG125 Bike Parts</a></li>
-          <li><a href="/parts/Honda/CD70/2023" class="hover:text-white transition-colors">Honda CD70 Bike Parts</a></li>
+          <li><a href="/parts?q=CD+70" class="hover:text-white transition-colors">Honda CD 70 Parts</a></li>
+          <li><a href="/parts?q=CG+125" class="hover:text-white transition-colors">Honda CG 125 Parts</a></li>
+          <li><a href="/parts?q=CB+150F" class="hover:text-white transition-colors">Honda CB 150F Parts</a></li>
+          <li><a href="/parts?q=YBR+125" class="hover:text-white transition-colors">Yamaha YBR 125 Parts</a></li>
+          <li><a href="/parts?q=GS+150" class="hover:text-white transition-colors">Suzuki GS 150 Parts</a></li>
+          <li><a href="/parts?q=GD+110" class="hover:text-white transition-colors">Suzuki GD 110S Parts</a></li>
         </ul>
       </div>
 

@@ -15,13 +15,13 @@
     <?php endforeach; ?>
   </nav>
 
-  <!-- Active "My Garage" Filter Banner -->
+  <!-- Active "My Bike" Filter Banner -->
   <?php if (!empty($activeVehicle)): ?>
     <div class="mb-6 p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-between shadow-sm">
       <div class="flex items-center gap-3">
-        <span class="text-2xl text-emerald-600">🚗</span>
+        <span class="text-2xl text-emerald-600">🏍️</span>
         <div>
-          <div class="text-[11px] font-bold uppercase tracking-wider text-emerald-800 font-condensed">Filtering for Your Vehicle</div>
+          <div class="text-[11px] font-bold uppercase tracking-wider text-emerald-800 font-condensed">Filtering for Your Motorcycle</div>
           <div class="text-sm font-bold text-slate-900">
             <?= e($activeVehicle['make']) ?> <?= e($activeVehicle['model']) ?> (<?= (int)$activeVehicle['year_start'] ?>-<?= (int)$activeVehicle['year_end'] ?>) <?= e($activeVehicle['engine']) ?>
           </div>

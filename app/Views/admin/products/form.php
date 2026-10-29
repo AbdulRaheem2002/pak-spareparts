@@ -39,7 +39,7 @@
                      name="name"
                      value="<?= e($product['name'] ?? '') ?>"
                      required
-                     placeholder="e.g. Toyota Genuine Oil Filter Element with O-Ring"
+                     placeholder="e.g. Atlas Honda Genuine Clutch Plate Set for CG125"
                      class="form-input text-xs font-semibold">
             </div>
 
@@ -50,7 +50,7 @@
                        name="sku"
                        value="<?= e($product['sku'] ?? '') ?>"
                        required
-                       placeholder="TOY-FLT-001"
+                       placeholder="AHL-CLT-125"
                        class="form-input text-xs font-mono uppercase">
               </div>
 
@@ -60,7 +60,7 @@
                        name="oem_number"
                        value="<?= e($product['oem_number'] ?? '') ?>"
                        required
-                       placeholder="04152-YZZA6"
+                       placeholder="22201-107-000"
                        class="form-input text-xs font-mono uppercase">
               </div>
             </div>
@@ -70,7 +70,7 @@
               <input type="text"
                      name="cross_references"
                      value="<?= e($product['cross_references'] ?? '') ?>"
-                     placeholder="04152-37010, HU6006Z, A-987"
+                     placeholder="FCC-CG125, 22201-KCS-920"
                      class="form-input text-xs font-mono">
             </div>
 

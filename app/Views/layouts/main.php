@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title><?= e($meta_title ?? $title ?? 'PakAutoParts | Genuine & OEM Spare Parts Online in Pakistan') ?></title>
-  <meta name="description" content="<?= e($meta_description ?? 'Buy 100% genuine and OEM auto spare parts for Toyota, Honda, Suzuki, and motorbikes in Pakistan. Cash on delivery and nationwide shipping.') ?>">
+  <title><?= e($meta_title ?? $title ?? 'PakBikeParts | 100% Genuine & OEM Motorcycle Spare Parts Pakistan') ?></title>
+  <meta name="description" content="<?= e($meta_description ?? 'Buy 100% genuine and OEM motorcycle spare parts for Honda CD 70, CG 125, CB 150F, Yamaha YBR 125, Pak Suzuki GS 150 & Chinese bikes in Pakistan. Cash on delivery.') ?>">
   <link rel="canonical" href="<?= e($canonical_url ?? url()) ?>">
   <meta name="theme-color" content="#0F172A">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="<?= e($og_type ?? 'website') ?>">
   <meta property="og:url" content="<?= e($canonical_url ?? url()) ?>">
-  <meta property="og:title" content="<?= e($meta_title ?? $title ?? 'PakAutoParts') ?>">
-  <meta property="og:description" content="<?= e($meta_description ?? 'Pakistan\'s trusted spare parts network') ?>">
+  <meta property="og:title" content="<?= e($meta_title ?? $title ?? 'PakBikeParts | Motorcycle Spare Parts Pakistan') ?>">
+  <meta property="og:description" content="<?= e($meta_description ?? 'Pakistan\'s trusted motorcycle spare parts network') ?>">
   <meta property="og:image" content="<?= e($og_image ?? url('assets/images/og-share.jpg')) ?>">
 
   <!-- Fonts -->
