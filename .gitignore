@@ -28,3 +28,4 @@ public/uploads/blog/*
 !public/uploads/blog/.gitkeep
 public/uploads/payments/*
 !public/uploads/payments/.gitkeep
+
