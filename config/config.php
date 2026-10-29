@@ -25,7 +25,7 @@ return [
     'app' => [
         'name'        => getenv('APP_NAME') ?: 'PakAutoParts',
         'tagline'     => 'Pakistan\'s Premier Auto Spare Parts Network',
-        'url'         => getenv('APP_URL') ?: 'https://slategray-sheep-670446.hostingersite.com',
+        'url'         => getenv('APP_URL') ?: $baseUrl,
         'env'         => getenv('APP_ENV') ?: 'prod', // 'prod' for live Hostinger deployment
         'debug'       => false,
         'key'         => getenv('APP_KEY') ?: 'base64_pakautoparts_secure_key_2026_x99a',
