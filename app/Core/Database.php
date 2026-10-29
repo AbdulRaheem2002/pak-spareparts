@@ -23,38 +23,50 @@ class Database
 
         $config = Config::get('db');
 
-        $dsn = sprintf(
-            'mysql:host=%s;port=%d;dbname=%s;charset=%s',
-            $config['host'],
-            $config['port'],
-            $config['database'],
-            $config['charset']
-        );
+        $hostsToTry = array_unique([$config['host'], 'localhost', '127.0.0.1']);
+        $lastException = null;
 
-        try {
-            self::$instance = new PDO(
-                $dsn,
-                $config['username'],
-                $config['password'],
-                $config['options']
+        foreach ($hostsToTry as $host) {
+            $dsn = sprintf(
+                'mysql:host=%s;port=%d;dbname=%s;charset=%s',
+                $host,
+                $config['port'],
+                $config['database'],
+                $config['charset']
             );
-            return self::$instance;
-        } catch (PDOException $e) {
-            $logDir = Config::get('paths.logs');
-            if (is_dir($logDir)) {
-                file_put_contents(
-                    $logDir . '/db_errors.log',
-                    sprintf("[%s] DB Connection Error: %s\n", date('Y-m-d H:i:s'), $e->getMessage()),
-                    FILE_APPEND | LOCK_EX
+
+            try {
+                self::$instance = new PDO(
+                    $dsn,
+                    $config['username'],
+                    $config['password'],
+                    $config['options']
                 );
+                return self::$instance;
+            } catch (PDOException $e) {
+                $lastException = $e;
+                // If it's an access denied (wrong password/user), don't retry other hosts
+                if ($e->getCode() === 1045) {
+                    break;
+                }
             }
-
-            if (Config::get('app.debug')) {
-                throw new \RuntimeException("Database Connection Failed: " . $e->getMessage(), (int)$e->getCode(), $e);
-            }
-
-            die("A temporary database error occurred. Please try again shortly or contact support.");
         }
+
+        // Log error
+        $logDir = Config::get('paths.logs');
+        if (is_dir($logDir)) {
+            @file_put_contents(
+                $logDir . '/db_errors.log',
+                sprintf("[%s] DB Connection Error: %s\n", date('Y-m-d H:i:s'), $lastException?->getMessage()),
+                FILE_APPEND | LOCK_EX
+            );
+        }
+
+        // Throw detailed exception so index.php diagnostic renderer can display exact guidance
+        throw new \RuntimeException(
+            "Database Connection Failed: " . ($lastException ? $lastException->getMessage() : 'Unknown error') .
+            " | Database: [{$config['database']}], User: [{$config['username']}]"
+        );
     }
 
     public static function query(string $sql, array $params = []): \PDOStatement
