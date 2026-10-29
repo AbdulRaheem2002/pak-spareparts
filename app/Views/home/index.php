@@ -149,10 +149,6 @@
       <?php endforeach; ?>
     </div>
   </section>
-        </a>
-      <?php endforeach; ?>
-    </div>
-  </section>
 
   <!-- ============================================================================
        FEATURED & BEST SELLING SPARE PARTS

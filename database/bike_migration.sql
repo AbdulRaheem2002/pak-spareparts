@@ -186,7 +186,7 @@ INSERT INTO `product_fitment` (`product_id`, `vehicle_id`, `notes`) VALUES
 (16, 12, '1.0L capacity for Suzuki GS 150');
 
 -- 7. WHOLESALE MECHANIC TIER PRICING (Bulk discounts for local motorcycle workshops)
-INSERT INTO `product_price_tiers` (`product_id`, `min_quantity`, `price_per_unit`) VALUES
+INSERT INTO `product_price_tiers` (`product_id`, `min_qty`, `unit_price`) VALUES
 -- CD70 Carburetor: Buy 3+ @ Rs. 3,950, Buy 5+ @ Rs. 3,800
 (1, 3, 3950.00),
 (1, 5, 3800.00),

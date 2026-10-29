@@ -23,6 +23,12 @@ class Database
 
         $config = Config::get('db');
 
+        if (empty($config['password']) || $config['password'] === 'YOUR_DATABASE_PASSWORD_HERE') {
+            throw new \RuntimeException(
+                "Database password not configured! Please open config/config.php (or create a .env file with DB_PASSWORD=your_password) and set the MySQL password for user '{$config['username']}'."
+            );
+        }
+
         $hostsToTry = array_unique([$config['host'], 'localhost', '127.0.0.1']);
         $lastException = null;
 

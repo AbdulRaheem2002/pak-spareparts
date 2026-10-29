@@ -1,4 +1,6 @@
 # Environment & deployment archives
+.env
+config/local.php
 *.zip
 *.tar.gz
 *.rar

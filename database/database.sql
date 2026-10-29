@@ -571,7 +571,7 @@ INSERT INTO `product_fitment` (`product_id`, `vehicle_id`, `notes`) VALUES
 (16, 12, '1.0L capacity for Suzuki GS 150');
 
 -- 7. WHOLESALE MECHANIC TIER PRICING (Bulk discounts for local motorcycle workshops)
-INSERT INTO `product_price_tiers` (`product_id`, `min_quantity`, `price_per_unit`) VALUES
+INSERT INTO `product_price_tiers` (`product_id`, `min_qty`, `unit_price`) VALUES
 -- CD70 Carburetor: Buy 3+ @ Rs. 3,950, Buy 5+ @ Rs. 3,800
 (1, 3, 3950.00),
 (1, 5, 3800.00),
@@ -603,39 +603,33 @@ ON DUPLICATE KEY UPDATE `setting_value` = VALUES(`setting_value`);
 
 
 -- 10. Sample Customer Reviews
-INSERT INTO 
-eviews (id, product_id, customer_name, customer_email, customer_phone, 
-ating, comment, is_approved) VALUES
+INSERT INTO `reviews` (`id`, `product_id`, `customer_name`, `customer_email`, `customer_phone`, `rating`, `comment`, `is_approved`) VALUES
 (1, 1, 'Khurram Shehzad', 'khurram.lhr@gmail.com', '03008456123', 5, 'Received 100% genuine Atlas Honda CD70 carburetor in original red box. Mileage went from 45km/l to 62km/l! Fast delivery in Lahore.', 1),
 (2, 2, 'Zeeshan Butt', 'zeeshan.rwp@yahoo.com', '03212349876', 5, 'Fitted these clutch plates on my CG125. Acceleration is instant, zero clutch slip on flyovers even with a pillion passenger.', 1),
 (3, 3, 'Adeel Munir', 'adeel.khi@hotmail.com', '03335123456', 5, 'YBR chain sprocket kit is 100% genuine. Heavy duty 428H chain removed all vibrations on high speed cruising.', 1),
 (4, 5, 'Rana Kamran', 'kamran.fsd@gmail.com', '03454789123', 5, 'Original NGK D8EA spark plug. Starts CG 125 in half a kick in cold winter mornings. Authentic hologram stamped.', 1);
 
 -- 11. Motorcycle Blog Posts
-INSERT INTO log_categories (id, 
-ame, slug) VALUES
+INSERT INTO `blog_categories` (`id`, `name`, `slug`) VALUES
 (1, 'Bike Maintenance', 'bike-maintenance'),
 (2, 'Buying Advice', 'buying-advice'),
 (3, 'Genuine vs Fake Guides', 'genuine-vs-fake');
 
-INSERT INTO log_posts (id, 	itle, slug, excerpt, content, eatured_image, category_id, 	ags, 
-eading_time_min, ocus_keyword, meta_title, meta_description, is_published, published_at) VALUES
+INSERT INTO `blog_posts` (`id`, `title`, `slug`, `excerpt`, `content`, `featured_image`, `category_id`, `tags`, `reading_time_min`, `focus_keyword`, `meta_title`, `meta_description`, `is_published`, `published_at`) VALUES
 (1, 'How to Spot Fake vs Genuine Atlas Honda Motorcycle Parts in Pakistan', 'how-to-spot-fake-honda-parts-pakistan', 'A visual guide to identifying counterfeit Honda CD70 and CG125 spare parts in local Pakistani markets.', '<h2>The Counterfeit Bike Parts Problem</h2><p>Local markets across Pakistan are full of fake copy parts packed in replicated Atlas Honda boxes. Using fake clutch plates or low-quality carburetors drastically hurts your engine lifespan.</p><h3>1. Packaging and Holographic Security Tape</h3><p>Genuine Atlas Honda boxes feature crisp, sharp typography with verifiable barcode stickers. Genuine holographic tape changes color and leaves a tamper-evident honeycomb residue if peeled.</p><h3>2. The Clutch Plate Fiber Test</h3><p>Original Honda clutch plates use imported Japanese FCC heat-resistant friction discs. Low-grade copies use pressed cardboard fiber that burns and disintegrates inside your engine oil within 500 km.</p>', '/assets/images/placeholder.svg', 3, 'Honda, CG125, CD70, Genuine, Guide', 4, 'fake vs genuine honda parts pakistan', 'How to Spot Fake Honda Motorcycle Parts in Pakistan | PakBikeParts', 'Learn how to detect fake vs original Atlas Honda bike parts in Pakistan.', 1, '2026-10-15 10:00:00'),
 
 (2, 'Best 4T Engine Oil for CD 70 and CG 125 in Harsh Pakistani Summers', 'best-engine-oil-motorcycles-pakistan', 'Recommended oil viscosity grades (20W-50 vs 10W-40) and change intervals for Honda, Yamaha, and Suzuki bikes.', '<h2>Why Extreme Heat Destroys Low-Grade Bike Oils</h2><p>Air-cooled motorcycle engines in Pakistan run at blistering temperatures up to 130°C in stop-and-go traffic during summer. Low quality oil loses viscosity and leads to piston ring seizing.</p><h3>Recommended Oil Grades</h3><p>For horizontal 70cc engines (CD70, United 70), SAE 20W-50 JASO MA2 is the optimal specification. Always adhere strictly to the 0.7 Litre sump capacity to prevent oil foaming and clutch slippage.</p>', '/assets/images/placeholder.svg', 1, 'Engine Oil, CD70, CG125, Maintenance', 5, 'best bike engine oil pakistan', 'Best Motorcycle Engine Oil for CD 70 & CG 125 in Pakistan (2026 Guide)', 'Expert guide on choosing the right 4T engine oil for motorcycles in Pakistan.', 1, '2026-10-20 14:30:00');
 
 -- 12. Default Admin User (password: Admin@12345)
-INSERT INTO users (id, 
-ame, email, password_hash, 
-ole) VALUES
-(1, 'System Administrator', 'admin@pakbikeparts.pk', '/d4q.U/v9Y2qC4yR3X1W8J2G8zJ9Gy', 'owner');
+INSERT INTO `users` (`id`, `name`, `email`, `password_hash`, `role`) VALUES
+(1, 'System Administrator', 'admin@pakbikeparts.pk', '$2y$10$z9u2Tt9WPM0DfP3Jquf5O.z4l7Qi8vaCPGAZtj2Mt4E6QaUkRGZOO', 'owner');
 
 -- 13. Coupons & Shipping
-INSERT INTO coupons (id, code, discount_type, discount_value, min_spend, max_discount, usage_limit, usage_count, start_date, expiry_date, is_active) VALUES
+INSERT INTO `coupons` (`id`, `code`, `discount_type`, `discount_value`, `min_spend`, `max_discount`, `usage_limit`, `usage_count`, `start_date`, `expiry_date`, `is_active`) VALUES
 (1, 'BIKESAVE10', 'percent', 10.00, 2000.00, 1000.00, 500, 12, '2026-01-01', '2026-12-31', 1),
 (2, 'FIRST300', 'fixed', 300.00, 3000.00, 300.00, 1000, 45, '2026-01-01', '2026-12-31', 1);
 
-INSERT INTO shipping_rates (id, city, province, standard_rate, cod_fee, ree_threshold, delivery_days) VALUES
+INSERT INTO `shipping_rates` (`id`, `city`, `province`, `standard_rate`, `cod_fee`, `free_threshold`, `delivery_days`) VALUES
 (1, 'Lahore', 'Punjab', 150.00, 30.00, 3000.00, 'Same Day / Next Day'),
 (2, 'Karachi', 'Sindh', 250.00, 50.00, 4000.00, '2-3 Working Days'),
 (3, 'Islamabad', 'Federal', 200.00, 40.00, 3500.00, '1-2 Working Days'),
