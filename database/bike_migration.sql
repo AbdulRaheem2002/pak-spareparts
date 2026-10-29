@@ -3,6 +3,8 @@
 -- 100% Focused on Pakistani Bike Market: Honda CD70/CG125, Yamaha YBR, Suzuki GS150
 -- ==============================================================================
 
+USE `u676397674_spareparts_db`;
+
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- 1. TRUNCATE CATALOG TABLES (Preserve Users & Orders)

@@ -3,6 +3,9 @@
 -- Designed for MySQL 8.0 / MariaDB 10.4+ with Foreign Keys & FULLTEXT Search
 -- ==============================================================================
 
+-- Select the Hostinger database automatically
+USE `u676397674_spareparts_db`;
+
 SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `url_redirects`;
 DROP TABLE IF EXISTS `audit_logs`;
