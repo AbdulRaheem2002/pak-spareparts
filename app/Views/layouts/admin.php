@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?= e($title ?? 'Admin Dashboard | PakAutoParts') ?></title>
+  <title><?= e($title ?? 'Admin Dashboard | PakBikeParts') ?></title>
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#0F172A">
 
@@ -43,7 +43,7 @@
   <!-- Alpine.js 3 -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
 </head>
-<body class="h-full flex antialiased text-slate-800">
+<body class="admin-body h-screen flex flex-row overflow-hidden antialiased text-slate-800" style="flex-direction: row !important; height: 100vh !important;">
 
   <!-- Admin Sidebar -->
   <?= \App\Core\View::partial('partials/admin_sidebar') ?>

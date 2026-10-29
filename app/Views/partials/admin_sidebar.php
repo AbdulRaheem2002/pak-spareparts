@@ -4,13 +4,13 @@
   $user = \App\Core\Auth::user();
   $role = $user['role'] ?? 'staff';
 ?>
-<aside class="w-64 bg-chassis-950 text-slate-300 flex flex-col flex-shrink-0 border-r border-slate-800 min-h-screen">
+<aside class="w-64 bg-chassis-950 text-slate-300 flex flex-col flex-shrink-0 border-r border-slate-800 h-screen max-h-screen">
   
   <!-- Sidebar Header / Logo -->
   <div class="h-16 flex items-center px-6 bg-slate-900 border-b border-slate-800">
     <a href="/admin" class="flex items-center gap-2">
-      <span class="text-xl">⚙️</span>
-      <span class="font-bold text-white tracking-wider uppercase font-condensed text-base">PakAuto <span class="text-brand-500">Admin</span></span>
+      <span class="text-xl">🏍️</span>
+      <span class="font-bold text-white tracking-wider uppercase font-condensed text-base">PakBike <span class="text-brand-500">Admin</span></span>
     </a>
   </div>
 
@@ -38,7 +38,7 @@
     </a>
 
     <a href="/admin/vehicles" class="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors <?= str_starts_with($currentUri, '/admin/vehicles') ? 'bg-brand-500 text-white font-bold' : 'hover:bg-slate-800 text-slate-300' ?>">
-      <span class="text-base">🚗</span> Vehicle Fitments
+      <span class="text-base">🏍️</span> Bike Models &amp; Fitment
     </a>
 
     <div class="pt-3 px-3 py-1.5 text-[10px] uppercase font-bold text-slate-500 font-condensed tracking-wider">Sales &amp; Orders</div>

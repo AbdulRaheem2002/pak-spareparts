@@ -19,6 +19,14 @@ body {
   color: #0f172a;
 }
 
+/* Admin layout must always be horizontal row */
+body.admin-body {
+  flex-direction: row !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  overflow: hidden !important;
+}
+
 .font-condensed {
   font-family: 'Chakra Petch', sans-serif !important;
   letter-spacing: 0.02em;
