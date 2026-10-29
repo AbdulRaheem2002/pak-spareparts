@@ -39,15 +39,15 @@
       <!-- Action Nav (My Garage, Cart, Support) -->
       <div class="flex items-center gap-3 sm:gap-5">
 
-        <!-- "My Garage" Quick Selector Pill -->
+        <!-- "My Bike" Quick Selector Pill -->
         <div class="relative">
           <button type="button"
                   onclick="document.getElementById('garage-modal').classList.remove('hidden')"
                   class="flex items-center gap-2 px-3 py-2 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg text-xs font-semibold text-slate-800 transition-colors">
-            <span class="text-brand-500 text-base">🚗</span>
+            <span class="text-brand-500 text-base">🏍️</span>
             <div class="text-left">
-              <div class="text-[10px] uppercase font-bold text-slate-500 leading-none">My Garage</div>
-              <div class="truncate max-w-[120px] sm:max-w-[150px] leading-tight font-bold" data-garage-display>Select Vehicle</div>
+              <div class="text-[10px] uppercase font-bold text-slate-500 leading-none">My Bike</div>
+              <div class="truncate max-w-[120px] sm:max-w-[150px] leading-tight font-bold" data-garage-display>Select Bike</div>
             </div>
             <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>

@@ -1,6 +1,6 @@
 <?php
 /**
- * PakAutoParts - Global Application Configuration
+ * PakBikeParts - Global Application Configuration
  * Works on Apache / cPanel / hPanel / Localhost (XAMPP / Laragon)
  */
 
@@ -23,8 +23,8 @@ $baseUrl = rtrim($scheme . '://' . $host . $scriptDir, '/');
 
 return [
     'app' => [
-        'name'        => getenv('APP_NAME') ?: 'PakAutoParts',
-        'tagline'     => 'Pakistan\'s Premier Auto Spare Parts Network',
+        'name'        => getenv('APP_NAME') ?: 'PakBikeParts',
+        'tagline'     => 'Pakistan\'s Premier Motorcycle Spare Parts Network',
         'url'         => getenv('APP_URL') ?: $baseUrl,
         'env'         => getenv('APP_ENV') ?: 'prod', // 'prod' for live Hostinger deployment
         'debug'       => false,

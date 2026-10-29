@@ -10,15 +10,15 @@
       
       <div class="bg-chassis-900 px-6 py-4 flex items-center justify-between text-white border-b border-slate-800">
         <div class="flex items-center gap-2">
-          <span class="text-xl">🚗</span>
-          <h3 class="text-base font-bold uppercase tracking-wider font-condensed" id="modal-title">Select Your Vehicle (My Garage)</h3>
+          <span class="text-xl">🏍️</span>
+          <h3 class="text-base font-bold uppercase tracking-wider font-condensed" id="modal-title">Select Your Motorcycle (My Bike)</h3>
         </div>
         <button type="button" onclick="document.getElementById('garage-modal').classList.add('hidden')" class="text-slate-400 hover:text-white text-2xl font-bold">&times;</button>
       </div>
 
       <div class="p-6">
         <p class="text-xs text-slate-600 mb-4">
-          Save your car or motorcycle to guarantee 100% exact part fitment and filter out non-compatible parts across our entire catalog.
+          Save your bike to guarantee 100% exact spare part fitment and filter out non-compatible parts across our entire catalog.
         </p>
 
         <!-- Current Saved Vehicle Banner -->
@@ -26,7 +26,7 @@
           <div class="flex items-center gap-2.5">
             <span class="text-emerald-600 text-lg">✓</span>
             <div>
-              <div class="text-[11px] font-bold uppercase text-emerald-800 tracking-wider">Active Garage Vehicle</div>
+              <div class="text-[11px] font-bold uppercase text-emerald-800 tracking-wider">Active Saved Motorcycle</div>
               <div class="text-sm font-bold text-slate-900" data-garage-display>—</div>
             </div>
           </div>
@@ -39,27 +39,27 @@
         <form id="garage-modal-form" onsubmit="event.preventDefault(); handleGarageModalSubmit();">
           <div class="space-y-3.5">
             <div>
-              <label class="form-label">1. Select Vehicle Make</label>
+              <label class="form-label">1. Select Bike Brand / Make</label>
               <select id="modal-make-select" class="form-input" onchange="loadGarageModels(this.value)" required>
-                <option value="">-- Choose Make (e.g. Toyota, Honda, Suzuki) --</option>
-                <option value="Toyota">Toyota</option>
+                <option value="">-- Choose Brand (e.g. Honda, Yamaha, Suzuki) --</option>
                 <option value="Honda">Honda</option>
-                <option value="Suzuki">Suzuki</option>
-                <option value="KIA">KIA</option>
-                <option value="Hyundai">Hyundai</option>
                 <option value="Yamaha">Yamaha</option>
+                <option value="Suzuki">Suzuki</option>
+                <option value="United">United</option>
+                <option value="Road Prince">Road Prince</option>
+                <option value="Hi-Speed">Hi-Speed</option>
               </select>
             </div>
 
             <div>
-              <label class="form-label">2. Select Vehicle Model</label>
+              <label class="form-label">2. Select Bike Model</label>
               <select id="modal-model-select" class="form-input" onchange="loadGarageYears()" disabled required>
-                <option value="">-- First Select Make --</option>
+                <option value="">-- First Select Brand --</option>
               </select>
             </div>
 
             <div>
-              <label class="form-label">3. Select Production Year</label>
+              <label class="form-label">3. Select Model Year / Engine</label>
               <select id="modal-year-select" class="form-input" disabled required>
                 <option value="">-- First Select Model --</option>
               </select>

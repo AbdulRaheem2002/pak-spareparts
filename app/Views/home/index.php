@@ -2,7 +2,7 @@
 <div class="space-y-12">
 
   <!-- ============================================================================
-       HERO SECTION WITH VEHICLE FITMENT WIDGET
+       HERO SECTION WITH MOTORCYCLE FITMENT WIDGET
        ============================================================================ -->
   <section class="hero-industrial-bg relative text-white py-12 md:py-20 border-b border-slate-800 overflow-hidden" style="background-color: #090d16 !important; color: #ffffff !important;">
     <!-- Subtle industrial grid background texture -->
@@ -14,35 +14,48 @@
         <!-- Hero Headline & Trust Badges -->
         <div class="lg:col-span-7 space-y-6">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-bold uppercase tracking-wider font-condensed">
-            <span>⚡</span> Pakistan's #1 Dedicated Auto Spare Parts Portal
+            <span>🏍️</span> Pakistan's #1 Dedicated Motorcycle Spare Parts Store
           </div>
 
           <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-condensed uppercase tracking-tight text-white leading-tight">
             Guaranteed Fitment <br>
-            <span class="text-brand-500">Genuine &amp; OEM Auto Parts</span>
+            <span class="text-brand-500">Genuine &amp; OEM Bike Parts</span>
           </h1>
 
           <p class="text-sm sm:text-base text-slate-300 max-w-xl leading-relaxed">
-            Order authentic replacement parts for your car or motorbike. Search by exact OEM part number, SKU, or filter by your specific vehicle. Nationwide Cash on Delivery across Pakistan.
+            Order authentic spare parts for Honda CD 70, CG 125, CB 150F, Yamaha YBR 125, Suzuki GS 150 &amp; Chinese 70cc bikes. Search by OEM part number, SKU, or select your exact bike model. Nationwide Cash on Delivery (COD).
           </p>
 
           <!-- Quick Feature Badges -->
           <div class="flex flex-wrap gap-4 text-xs font-semibold text-slate-300 pt-2">
-            <span class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> 100% Genuine &amp; OEM</span>
-            <span class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> 7-Day Return Policy</span>
-            <span class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> Mechanic WhatsApp Support</span>
+            <span class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> 100% Genuine &amp; OEM Parts</span>
+            <span class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> 7-Day Return Guarantee</span>
+            <span class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> Ustaad / Mechanic Wholesale Pricing</span>
+          </div>
+
+          <!-- Quick Bike Model Filters -->
+          <div class="pt-2">
+            <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 font-condensed mb-2">Popular Bikes in Pakistan:</div>
+            <div class="flex flex-wrap gap-2">
+              <a href="/parts?q=CD+70" class="px-2.5 py-1 bg-slate-800/80 hover:bg-brand-500 hover:text-white border border-slate-700 rounded text-xs font-bold font-condensed transition-colors">Honda CD 70</a>
+              <a href="/parts?q=CG+125" class="px-2.5 py-1 bg-slate-800/80 hover:bg-brand-500 hover:text-white border border-slate-700 rounded text-xs font-bold font-condensed transition-colors">Honda CG 125</a>
+              <a href="/parts?q=CB+150F" class="px-2.5 py-1 bg-slate-800/80 hover:bg-brand-500 hover:text-white border border-slate-700 rounded text-xs font-bold font-condensed transition-colors">Honda CB 150F</a>
+              <a href="/parts?q=YBR+125" class="px-2.5 py-1 bg-slate-800/80 hover:bg-brand-500 hover:text-white border border-slate-700 rounded text-xs font-bold font-condensed transition-colors">Yamaha YBR 125G</a>
+              <a href="/parts?q=GS+150" class="px-2.5 py-1 bg-slate-800/80 hover:bg-brand-500 hover:text-white border border-slate-700 rounded text-xs font-bold font-condensed transition-colors">Suzuki GS 150</a>
+              <a href="/parts?q=GD+110" class="px-2.5 py-1 bg-slate-800/80 hover:bg-brand-500 hover:text-white border border-slate-700 rounded text-xs font-bold font-condensed transition-colors">Suzuki GD 110S</a>
+            </div>
           </div>
         </div>
 
-        <!-- "SELECT YOUR VEHICLE" WIDGET (Hero Centerpiece) -->
+        <!-- "SELECT YOUR MOTORCYCLE" WIDGET (Hero Centerpiece) -->
         <div class="lg:col-span-5">
           <div class="bg-white text-slate-900 rounded-2xl shadow-2xl p-6 sm:p-7 border border-slate-200">
             <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-5">
-              <div class="flex items-center gap-2">
-                <span class="text-2xl">🚗</span>
+              <div class="flex items-center gap-2.5">
+                <span class="text-2xl">🏍️</span>
                 <div>
-                  <h2 class="text-base font-bold uppercase tracking-wider font-condensed text-slate-900 leading-none">Select Your Vehicle</h2>
-                  <span class="text-[11px] text-slate-500">Filter catalog to 100% compatible parts</span>
+                  <h2 class="text-base font-bold uppercase tracking-wider font-condensed text-slate-900 leading-none">Select Your Motorcycle</h2>
+                  <span class="text-[11px] text-slate-500">Filter catalog to 100% compatible bike parts</span>
                 </div>
               </div>
               <span class="text-xs font-bold text-brand-600 uppercase font-condensed bg-brand-50 px-2 py-0.5 rounded">Exact Fit</span>
@@ -54,9 +67,9 @@
                 
                 <!-- Make -->
                 <div>
-                  <label class="form-label">1. Vehicle Make</label>
+                  <label class="form-label">1. Motorcycle Make</label>
                   <select id="hero-make" class="form-input" onchange="loadHeroModels(this.value)" required>
-                    <option value="">-- Choose Make (e.g. Toyota, Honda) --</option>
+                    <option value="">-- Choose Brand (e.g. Honda, Yamaha, Suzuki) --</option>
                     <?php foreach ($makes as $m): ?>
                       <option value="<?= e($m) ?>"><?= e($m) ?></option>
                     <?php endforeach; ?>
@@ -65,15 +78,15 @@
 
                 <!-- Model -->
                 <div>
-                  <label class="form-label">2. Vehicle Model</label>
+                  <label class="form-label">2. Bike Model</label>
                   <select id="hero-model" class="form-input" onchange="loadHeroYears()" disabled required>
-                    <option value="">-- Select Make First --</option>
+                    <option value="">-- Select Brand First --</option>
                   </select>
                 </div>
 
                 <!-- Year / Engine -->
                 <div>
-                  <label class="form-label">3. Year &amp; Engine</label>
+                  <label class="form-label">3. Year &amp; Engine Displacement</label>
                   <select id="hero-year" name="vehicle_id" class="form-input" disabled required>
                     <option value="">-- Select Model First --</option>
                   </select>
@@ -81,7 +94,7 @@
 
                 <!-- Submit Button -->
                 <button type="submit" id="hero-submit-btn" class="w-full btn-primary py-3 text-sm shadow-md flex items-center justify-center gap-2" disabled>
-                  <span>Find Compatible Parts</span> &rarr;
+                  <span>Find Compatible Bike Parts</span> &rarr;
                 </button>
 
               </div>
@@ -94,15 +107,15 @@
   </section>
 
   <!-- ============================================================================
-       POPULAR CATEGORIES
+       POPULAR MOTORCYCLE CATEGORIES
        ============================================================================ -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between mb-6">
       <div>
         <h2 class="text-xl sm:text-2xl font-bold uppercase tracking-wider font-condensed text-slate-900">
-          Featured Categories
+          Motorcycle Systems &amp; Categories
         </h2>
-        <p class="text-xs text-slate-500">Explore critical replacement systems for cars and bikes</p>
+        <p class="text-xs text-slate-500">Explore authentic replacement components for your bike</p>
       </div>
       <a href="/parts" class="text-xs font-bold text-brand-600 hover:text-brand-700 uppercase font-condensed">
         View All Categories &rarr;
@@ -115,16 +128,15 @@
           <div class="w-14 h-14 rounded-full bg-slate-50 group-hover:bg-brand-50 flex items-center justify-center text-2xl mb-2.5 transition-colors border border-slate-100">
             <?php
               $icons = [
-                'engine-components'    => '⚙️',
-                'brake-system'         => '🛑',
-                'suspension-steering'  => '🔩',
-                'filters-maintenance'  => '🧰',
-                'electrical-ignition'  => '⚡',
-                'lighting-bulbs'       => '💡',
-                'body-parts-mirrors'   => '🚪',
-                'oils-lubricants'      => '🛢️',
-                'tyres-wheels'         => '🛞',
-                'accessories'          => '🔧',
+                'engine-cylinder'       => '⚙️',
+                'carburetor-fuel'       => '⛽',
+                'drive-transmission'    => '⛓️',
+                'electrical-ignition'   => '⚡',
+                'brakes-cables'         => '🛑',
+                'suspension-handling'   => '🔩',
+                'body-plastics-lights'  => '💡',
+                'silencers-exhaust'     => '🔥',
+                'tyres-tubes-oils'      => '🛞',
               ];
               echo $icons[$cat['slug']] ?? '📦';
             ?>
@@ -133,6 +145,10 @@
             <?= e($cat['name']) ?>
           </h3>
           <span class="text-[10px] text-slate-400 mt-0.5"><?= (int)$cat['product_count'] ?> parts</span>
+        </a>
+      <?php endforeach; ?>
+    </div>
+  </section>
         </a>
       <?php endforeach; ?>
     </div>
